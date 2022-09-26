@@ -1,8 +1,7 @@
 public class Main {
-    public static void main(String[] args) {
-        Userinterface ui = new Userinterface();
-        ui.userinterface();
-
-
+    public static void main(String[] args){
+        Userinterface userinterface = new Userinterface();
+        userinterface.start();
     }
 }
+
