@@ -1,36 +1,59 @@
 import java.util.Scanner;
 
 public class Userinterface {
+    private Room room;
 
     public void userinterface() {
         Scanner scanner = new Scanner(System.in);
         Adventure adventure = new Adventure();
         String userInput1;
 
+
+
         do {
-            System.out.println("You are in room 1. Where do you want to go");
+            System.out.println("You are in " + adventure.getSelectedRoom().getRoomName() + " Where do you want to go");
             userInput1 = scanner.nextLine();
 
 
-            switch (userInput1) {
-                case "go north":
-                    System.out.println("Going north");
-                    break;
 
-                case "go south":
-                    System.out.println("Going south");
+            switch (userInput1) {
+
+                case "go north":
+                    if (adventure.goNorth()){
+                        System.out.println(adventure.getSelectedRoom().getRoomName() + " " + adventure.getSelectedRoom().getRoomInfo());
+                    } else {
+                        System.out.println("You can not go that way");
+                    }
                     break;
 
                 case "go east":
-                    System.out.println("Going east");
+                    if (adventure.goEast()){
+                        System.out.println(adventure.getSelectedRoom().getRoomName() + " " + adventure.getSelectedRoom().getRoomInfo());
+                    } else {
+                        System.out.println("You can not go that way");
+                    }
+                    break;
+
+
+
+                case "go south":
+                    if (adventure.goSouth()){
+                        System.out.println(adventure.getSelectedRoom().getRoomName() + " " + adventure.getSelectedRoom().getRoomInfo());
+                    } else {
+                        System.out.println("You can not go that way");
+                    }
                     break;
 
                 case "go west":
-                    System.out.println("Going west");
+                    if (adventure.goWest()){
+                        System.out.println(adventure.getSelectedRoom().getRoomName() + " " + adventure.getSelectedRoom().getRoomInfo());
+                    } else {
+                        System.out.println("You can not go that way");
+                    }
                     break;
 
                 case "look":
-                    System.out.println(adventure.room1.toString());
+                    System.out.println("You are in " + adventure.getSelectedRoom().getRoomName() + " " + adventure.getSelectedRoom().getRoomInfo());
                     break;
 
                 case "help":
