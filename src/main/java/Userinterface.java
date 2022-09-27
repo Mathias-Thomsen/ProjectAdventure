@@ -18,51 +18,52 @@ public class Userinterface {
 
             switch (userInput1) {
 
-                case "go north":
+                case "go north", "north", "n" -> {
                     if (adventure.goNorth()){
                         System.out.println(adventure.getSelectedRoom().getRoomName() + " " + adventure.getSelectedRoom().getRoomInfo());
                     } else {
                         System.out.println("You can not go that way");
                     }
-                    break;
+                }
 
-                case "go east":
+
+                case "go east", "east", "e" -> {
                     if (adventure.goEast()){
                         System.out.println(adventure.getSelectedRoom().getRoomName() + " " + adventure.getSelectedRoom().getRoomInfo());
                     } else {
                         System.out.println("You can not go that way");
                     }
-                    break;
+                }
 
 
-
-                case "go south":
+                case "go south", "south", "s" -> {
                     if (adventure.goSouth()){
                         System.out.println(adventure.getSelectedRoom().getRoomName() + " " + adventure.getSelectedRoom().getRoomInfo());
                     } else {
                         System.out.println("You can not go that way");
                     }
-                    break;
+                }
 
-                case "go west":
+                case "go west", "west", "w" -> {
                     if (adventure.goWest()){
                         System.out.println(adventure.getSelectedRoom().getRoomName() + " " + adventure.getSelectedRoom().getRoomInfo());
                     } else {
                         System.out.println("You can not go that way");
                     }
-                    break;
+                }
 
-                case "look":
+                case "look" -> {
                     System.out.println("You are in " + adventure.getSelectedRoom().getRoomName() + " " + adventure.getSelectedRoom().getRoomInfo());
-                    break;
+                }
 
-                case "help":
+
+                case "help" -> {
                     System.out.println("print info");
-                    break;
+                }
 
-                case "exit":
+                case "exit" -> {
                     System.exit(0);
-                    break;
+                }
 
             }
 
