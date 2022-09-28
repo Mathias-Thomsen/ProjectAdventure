@@ -1,15 +1,11 @@
 import java.util.Scanner;
 
-public class Userinterface {
+public class UserInterface {
 
-
-    public void userinterface() {
+    public void user() {
         Scanner scanner = new Scanner(System.in);
         Adventure adventure = new Adventure();
         String userInput;
-
-
-
 
         do {
 
@@ -31,6 +27,10 @@ public class Userinterface {
 
 
         }while (userInput != "exit");
+    }
+
+    public void start(){
+        user();
     }
 }
 

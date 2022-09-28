@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args){
-        Userinterface userinterface = new Userinterface();
-        userinterface.userinterface();
+        UserInterface userinterface = new UserInterface();
+        userinterface.start();
     }
 }
 
