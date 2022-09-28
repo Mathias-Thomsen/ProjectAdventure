@@ -2,15 +2,15 @@ public class Map {
     private Map map;
     private Room startRoom;
     public void createRoom(){
-        Room room1 = new Room("Room 1", "Your are now in room 1....");
-        Room room2 = new Room("Room 2", "Your are now in room 2....");
-        Room room3 = new Room("Room 3", "Your are now in room 3....");
-        Room room4 = new Room("Room 4", "Your are now in room 4....");
-        Room room5 = new Room("Room 5", "Your are now in room 5....");
-        Room room6 = new Room("Room 6", "Your are now in room 6....");
-        Room room7 = new Room("Room 7", "Your are now in room 7....");
-        Room room8 = new Room("Room 8", "Your are now in room 8....");
-        Room room9 = new Room("Room 9", "Your are now in room 9....");
+        Room room1 = new Room("Room 1", "Info about Room 1");
+        Room room2 = new Room("Room 2", "Info about Room 2");
+        Room room3 = new Room("Room 3", "Info about Room 3");
+        Room room4 = new Room("Room 4", "Info about Room 4");
+        Room room5 = new Room("Room 5", "Info about Room 5");
+        Room room6 = new Room("Room 6", "Info about Room 6");
+        Room room7 = new Room("Room 7", "Info about Room 7");
+        Room room8 = new Room("Room 8", "Info about Room 8");
+        Room room9 = new Room("Room 9", "Info about Room 9");
 
         //Room1
         room1.setEast(room2);

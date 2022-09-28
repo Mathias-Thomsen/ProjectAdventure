@@ -35,7 +35,7 @@ public class Player {
     }
 
     public Room getRoomInfo(){
-        return getRoomInfo();
+        return selectedRoom;
     }
 
 
