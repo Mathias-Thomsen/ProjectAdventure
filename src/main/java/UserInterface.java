@@ -6,7 +6,7 @@ public class UserInterface {
         Scanner scanner = new Scanner(System.in);
         Adventure adventure = new Adventure();
         String userInput;
-        System.out.println("You are in " + adventure.getSelectedRoom().getRoomName() + " Where do you want to go");
+        System.out.println("You're start location is " + adventure.getSelectedRoom().getRoomName() + " Where do you want to go");
 
         do {
 
@@ -15,7 +15,7 @@ public class UserInterface {
             if (userInput.equals("l")) {
                 System.out.println(adventure.getSelectedRoom().getRoomInfo());
             } else if (adventure.go(userInput)) {
-                System.out.println("You are now in: " + adventure.getSelectedRoom().getRoomName());
+                System.out.println("You are now in: " + adventure.getSelectedRoom().getRoomName() + " Whats next?");
             } else {
                 System.out.println("You can not go that way");
             }
@@ -25,6 +25,8 @@ public class UserInterface {
     }
 
     public void start() {
+        System.out.println("Welcome to Adventure Game");
+        System.out.println("---------------------------");
         user();
     }
 }
