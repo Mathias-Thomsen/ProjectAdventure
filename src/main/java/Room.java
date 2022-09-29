@@ -7,10 +7,18 @@ public class Room {
     private Room east;
     private Room south;
     private Room west;
-    private String item;
+    private Item item;
 
 
-    public ArrayList<String> roomItems = new ArrayList<>();
+    public ArrayList<Item> getRoomItems() {
+        return roomItems;
+    }
+
+    public void setRoomItems(ArrayList<Item> roomItems) {
+        this.roomItems = roomItems;
+    }
+
+    public ArrayList<Item> roomItems = new ArrayList<>();
 
 
     public Room(String roomName, String roomInfo){
@@ -18,20 +26,20 @@ public class Room {
         this.roomInfo = roomInfo;
     }
 
-    public String addItem(String item) {
-        roomItems.add(item);
+    public Room(ArrayList roomItems){
+        this.roomItems = roomItems;
+    }
+
+    public Item getItem(){
         return item;
     }
 
-    public String getItem(){
-        return item;
+    public void setItem(){
+        this.item = item;
     }
 
-    public String removeItem(String item){
-        roomItems.remove(item);
-        return item;
+    public Room(){
     }
-
 
 
     public String getRoomName(){
