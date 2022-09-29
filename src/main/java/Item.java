@@ -9,8 +9,9 @@ public class Item {
         return itemName;
     }
 
-    public String toString(){
-        return getItemName();
+    @Override
+    public String toString() {
+        return itemName;
     }
 
 

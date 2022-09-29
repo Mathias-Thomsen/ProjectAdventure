@@ -2,7 +2,6 @@ import java.util.ArrayList;
 
 public class Player {
     private Room selectedRoom;
-    private ArrayList<Item> items = new ArrayList<>();
 
     public boolean move(String userInput){
         Room requestedRoom = null;

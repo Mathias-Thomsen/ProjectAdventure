@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 
 public class Room {
+    private ArrayList<Item> items = new ArrayList<>();
     private String roomName;
     private String roomInfo;
     private Room north;
     private Room east;
     private Room south;
     private Room west;
-    private ArrayList<Item> items = new ArrayList<>();
 
 
     public Room(String roomName, String roomInfo){
@@ -67,6 +67,7 @@ public class Room {
     public ArrayList<Item> getItems(){
         return items;
     }
+
 
     public void addItem(Item item){
         items.add(item);
