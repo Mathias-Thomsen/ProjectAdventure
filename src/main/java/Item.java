@@ -39,5 +39,13 @@ public class Item {
         this.room = room;
     }
 
+    public String getItemName(){
+        return itemName;
+    }
+
+    public String toString(){
+        return itemName + ": " + itemInfo;
+    }
+
 
 }

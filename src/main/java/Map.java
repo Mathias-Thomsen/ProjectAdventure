@@ -1,10 +1,11 @@
 import java.util.ArrayList;
 
 public class Map {
-    private Map map;
-    private Room startRoom;
     private ArrayList<Room> items = new ArrayList<>();
-    Room selectedRoom = new Room();
+
+    public Map(){
+        createRoom();
+    }
 
     Room room1 = new Room("Room 1", "Info about Room 1: ");
     Room room2 = new Room("Room 2", "Info about Room 2");
@@ -16,15 +17,27 @@ public class Map {
     Room room8 = new Room("Room 8", "Info about Room 8");
     Room room9 = new Room("Room 9", "Info about Room 9");
 
+    Item item1 = new Item("itemName1", "itemInfo1");
+    Item item2 = new Item("itemName2", "itemInfo2");
+    Item item3 = new Item("itemName3", "itemInfo3");
+    Item item4 = new Item("itemName4", "itemInfo4");
+    Item item5 = new Item("itemName5", "itemInfo5");
+    Item item6 = new Item("itemName6", "itemInfo6");
+    Item item7 = new Item("itemName7", "itemInfo7");
+    Item item8 = new Item("itemName8", "itemInfo8");
+    Item item9 = new Item("itemName9", "itemInfo9");
+
     public void createRoom(){
 
         //Room1
         room1.setEast(room2);
         room1.setSouth(room4);
+        room1.addItem(item1);
 
         //Room2
         room2.setEast(room3);
         room2.setWest(room1);
+        room2.addItem(item2);
 
         //Room3
         room3.setSouth(room6);
@@ -54,46 +67,11 @@ public class Map {
         room9.setNorth(room6);
         room9.setWest(room8);
 
-        startRoom = room1;
-    }
-
-    Item item1 = new Item("itemName1", "itemInfo1");
-    Item item2 = new Item("itemName2", "itemInfo2");
-    Item item3 = new Item("itemName3", "itemInfo3");
-    Item item4 = new Item("itemName4", "itemInfo4");
-    Item item5 = new Item("itemName5", "itemInfo5");
-    Item item6 = new Item("itemName6", "itemInfo6");
-    Item item7 = new Item("itemName7", "itemInfo7");
-    Item item8 = new Item("itemName8", "itemInfo8");
-    Item item9 = new Item("itemName9", "itemInfo9");
-
-
-    public ArrayList<Room> roomItems(){
-        item1.setRoom(room1);
-        item2.setRoom(room1);
-        item3.setRoom(room1);
-        item4.setRoom(room4);
-        item5.setRoom(room5);
-        items.add(item1.getRoom());
-        items.add(item2.getRoom());
-        items.add(item3.getRoom());
-        room2.setItem(item2);
-        room3.setItem(item3);
-        room4.setItem(item4);
-        return items;
-    }
-
-    public String itemsInRooms(){
-        String itemInRooms = null;
-        for (Room items: roomItems()){
-            itemInRooms = "\n" +items.getItem().getItemName(selectedRoom);
-        }
-        return itemInRooms;
     }
 
 
     public Room getStartRoom(){
-        return startRoom;
+        return room1;
     }
 
 

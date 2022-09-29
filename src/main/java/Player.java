@@ -4,7 +4,7 @@ public class Player {
     private Room selectedRoom;
     private Item item = new Item();
     private Room room = new Room();
-    private ArrayList<Item> inventory = new ArrayList<>();
+    private ArrayList<Item> items = new ArrayList<>();
 
     public boolean move(String userInput){
         Room requestedRoom = null;
@@ -26,9 +26,13 @@ public class Player {
         }else {
             return false;
         }
-
-
     }
+
+    public void addItem(Item item){
+        items.add(item);
+    }
+
+
     public Room getSelectedRoom(){
         return selectedRoom;
     }
@@ -40,16 +44,12 @@ public class Player {
         return selectedRoom;
     }
 
-    public void setInventory(ArrayList<Item> inventory){
-        this.inventory = inventory;
-    }
-
-    public ArrayList<Item> getInventory(){
-        return inventory;
+    public ArrayList<Item> getItemLists(){
+        return items;
     }
 
 
-
-
-
+    public ArrayList<Item> getItems() {
+        return items;
+    }
 }

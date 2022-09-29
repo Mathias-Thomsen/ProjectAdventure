@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Adventure {
     private Player player = new Player();
     private Map map = new Map();
@@ -23,5 +25,9 @@ public class Adventure {
     }
     public Map getMap(){
         return map;
+    }
+
+    public ArrayList<Item> getItemList(){
+        return player.getItems();
     }
 }

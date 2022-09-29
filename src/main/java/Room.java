@@ -9,6 +9,7 @@ public class Room {
     private Room south;
     private Room west;
     private Item item;
+    private ArrayList<Item> items = new ArrayList<>();
 
 
     public ArrayList<Item> getRoomItems() {
@@ -45,6 +46,16 @@ public class Room {
     public Room getSelectedRoom(){
         return selectedRoom;
     }
+
+
+    public ArrayList<Item> getItems(){
+        return  items;
+    }
+
+    public void addItem(Item item){
+        items.add(item);
+    }
+
 
 
     public String getRoomName(){
