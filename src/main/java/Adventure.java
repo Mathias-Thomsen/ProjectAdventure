@@ -1,6 +1,7 @@
 public class Adventure {
     private Player player = new Player();
     private Map map = new Map();
+    private Item item = new Item();
 
 
     public Adventure() {
@@ -20,5 +21,10 @@ public class Adventure {
     public Room getRoomInfo(){
         return player.getRoomInfo();
     }
+    /*public String getTakeItem(){
+        return player.takeItem();
+    }
+
+     */
 
 }

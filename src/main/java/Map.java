@@ -15,6 +15,7 @@ public class Map {
         //Room1
         room1.setEast(room2);
         room1.setSouth(room4);
+        room1.addItem("light");
 
         //Room2
         room2.setEast(room3);

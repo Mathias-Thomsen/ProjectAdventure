@@ -25,10 +25,13 @@ public class UserInterface {
                     break;
 
                 case "look", "l":
-                    System.out.println(adventure.getSelectedRoom().getRoomInfo());
+                    System.out.println(adventure.getSelectedRoom().getRoomInfo() + adventure.getSelectedRoom().getItem());
                     break;
 
                 case "help":
+
+                case "take":
+
 
                 case "exit":
                     System.exit(0);
