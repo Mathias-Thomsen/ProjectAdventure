@@ -30,6 +30,7 @@ public class Map {
         room1.setEast(room2);
         room1.setSouth(room4);
         room1.addItem(item1);
+        room1.addItem(item2);
 
         //Room2
         room2.setEast(room3);

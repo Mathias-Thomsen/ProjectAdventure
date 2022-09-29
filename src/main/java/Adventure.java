@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Adventure {
     private Player player = new Player();
     private Map map = new Map();
+    private Room room = new Room();
 
     public Adventure() {
         map.createRoom();
@@ -16,8 +17,13 @@ public class Adventure {
     }
     public Room getSelectedRoom() {
         return player.getSelectedRoom();
-
     }
+
+    public Player getPlayer(){
+        return player;
+    }
+
+
     public Room getRoomInfo(){
         return player.getRoomInfo();
     }
@@ -25,7 +31,4 @@ public class Adventure {
         return map;
     }
 
-    public ArrayList<Item> getItemList(){
-        return player.getItems();
-    }
 }

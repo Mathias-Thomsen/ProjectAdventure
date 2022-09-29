@@ -3,24 +3,11 @@ import java.util.ArrayList;
 public class Room {
     private String roomName;
     private String roomInfo;
-    private Room selectedRoom;
     private Room north;
     private Room east;
     private Room south;
     private Room west;
-    private Item item;
     private ArrayList<Item> items = new ArrayList<>();
-
-
-    public ArrayList<Item> getRoomItems() {
-        return roomItems;
-    }
-
-    public void setRoomItems(ArrayList<Item> roomItems) {
-        this.roomItems = roomItems;
-    }
-
-    public ArrayList<Item> roomItems = new ArrayList<>();
 
 
     public Room(String roomName, String roomInfo){
@@ -28,24 +15,9 @@ public class Room {
         this.roomInfo = roomInfo;
     }
 
-    public Room(ArrayList roomItems){
-        this.roomItems = roomItems;
-    }
-
-    public Item getItem(){
-        return item;
-    }
-
-    public void setItem(Item item){
-        this.item = item;
-    }
-
     public Room(){
     }
 
-    public Room getSelectedRoom(){
-        return selectedRoom;
-    }
 
     public String getRoomName(){
         return roomName;
@@ -93,17 +65,12 @@ public class Room {
 
 
     public ArrayList<Item> getItems(){
-        return  items;
+        return items;
     }
 
     public void addItem(Item item){
         items.add(item);
     }
-
-
-
-
-
 
 
 }

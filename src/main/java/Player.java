@@ -2,7 +2,6 @@ import java.util.ArrayList;
 
 public class Player {
     private Room selectedRoom;
-    private Room room = new Room();
     private ArrayList<Item> items = new ArrayList<>();
 
     public boolean move(String userInput){
@@ -40,12 +39,4 @@ public class Player {
         return selectedRoom;
     }
 
-
-    public void addItem(Item item){
-        items.add(item);
-    }
-
-    public ArrayList<Item> getItems() {
-        return items;
-    }
 }
