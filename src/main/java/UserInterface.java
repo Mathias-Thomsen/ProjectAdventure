@@ -12,14 +12,27 @@ public class UserInterface {
 
             userInput = scanner.nextLine();
 
-            if (userInput.equals("l")) {
-                System.out.println(adventure.getSelectedRoom().getRoomInfo());
-            } else if (adventure.go(userInput)) {
-                System.out.println("You are now in: " + adventure.getSelectedRoom().getRoomName() + " Whats next?");
-            } else {
-                System.out.println("You can not go that way");
-            }
+            switch (userInput) {
+                case "go north", "n":
+                case "go east", "e":
+                case "go south", "s":
+                case "go west", "w":
+                    if (adventure.go(userInput)) {
+                        System.out.println("You are now in: " + adventure.getSelectedRoom().getRoomName() + " Whats next?");
+                    } else {
+                        System.out.println("You can not go that way");
+                    }
+                    break;
 
+                case "look", "l":
+                    System.out.println(adventure.getSelectedRoom().getRoomInfo());
+                    break;
+
+                case "help":
+
+                case "exit":
+                    System.exit(0);
+            }
 
         } while (userInput != "exit");
     }
