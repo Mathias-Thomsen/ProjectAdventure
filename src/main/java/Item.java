@@ -4,11 +4,10 @@ public class Item {
     Room room = new Room();
     Room selectedRoom = new Room();
 
-    public Item(String itemName, String itemInfo){
+
+
+    public Item(String itemName){
         this.itemName = itemName;
-        this.itemInfo = itemInfo;
-    }
-    public Item(){
     }
 
     public Item(Room selectedRoom){
@@ -44,7 +43,7 @@ public class Item {
     }
 
     public String toString(){
-        return itemName + ": " + itemInfo;
+        return itemName;
     }
 
 

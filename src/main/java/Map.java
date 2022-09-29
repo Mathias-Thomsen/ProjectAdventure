@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-
 public class Map {
-    private ArrayList<Room> items = new ArrayList<>();
 
     public Map(){
         createRoom();
@@ -17,15 +14,15 @@ public class Map {
     Room room8 = new Room("Room 8", "Info about Room 8");
     Room room9 = new Room("Room 9", "Info about Room 9");
 
-    Item item1 = new Item("itemName1", "itemInfo1");
-    Item item2 = new Item("itemName2", "itemInfo2");
-    Item item3 = new Item("itemName3", "itemInfo3");
-    Item item4 = new Item("itemName4", "itemInfo4");
-    Item item5 = new Item("itemName5", "itemInfo5");
-    Item item6 = new Item("itemName6", "itemInfo6");
-    Item item7 = new Item("itemName7", "itemInfo7");
-    Item item8 = new Item("itemName8", "itemInfo8");
-    Item item9 = new Item("itemName9", "itemInfo9");
+    Item item1 = new Item("Sword");
+    Item item2 = new Item("Food");
+    Item item3 = new Item("itemName3");
+    Item item4 = new Item("itemName4");
+    Item item5 = new Item("itemName5");
+    Item item6 = new Item("itemName6");
+    Item item7 = new Item("itemName7");
+    Item item8 = new Item("itemName8");
+    Item item9 = new Item("itemName9");
 
     public void createRoom(){
 

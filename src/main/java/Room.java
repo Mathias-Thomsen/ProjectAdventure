@@ -47,17 +47,6 @@ public class Room {
         return selectedRoom;
     }
 
-
-    public ArrayList<Item> getItems(){
-        return  items;
-    }
-
-    public void addItem(Item item){
-        items.add(item);
-    }
-
-
-
     public String getRoomName(){
         return roomName;
     }
@@ -102,6 +91,14 @@ public class Room {
         this.west = room;
     }
 
+
+    public ArrayList<Item> getItems(){
+        return  items;
+    }
+
+    public void addItem(Item item){
+        items.add(item);
+    }
 
 
 
