@@ -1,9 +1,10 @@
 import java.util.ArrayList;
 
 public class Player {
-    private Map map;
     private Room selectedRoom;
     private Item item = new Item();
+    private Room room = new Room();
+    private ArrayList<Item> inventory = new ArrayList<>();
 
     public boolean move(String userInput){
         Room requestedRoom = null;
@@ -38,21 +39,16 @@ public class Player {
     public Room getRoomInfo(){
         return selectedRoom;
     }
-    ArrayList<String>playerInventory = new ArrayList<>();
 
-    /*public String takeItem(){
-
-        if (getSelectedRoom().getItem() != null){
-            String item = getSelectedRoom().getItem();
-            playerInventory.add(item);
-
-            getSelectedRoom().removeItem(item);
-
-
-        }
+    public void setInventory(ArrayList<Item> inventory){
+        this.inventory = inventory;
     }
 
-     */
+    public ArrayList<Item> getInventory(){
+        return inventory;
+    }
+
+
 
 
 

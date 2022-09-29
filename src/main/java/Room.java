@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Room {
     private String roomName;
     private String roomInfo;
+    private Room selectedRoom;
     private Room north;
     private Room east;
     private Room south;
@@ -34,11 +35,15 @@ public class Room {
         return item;
     }
 
-    public void setItem(){
+    public void setItem(Item item){
         this.item = item;
     }
 
     public Room(){
+    }
+
+    public Room getSelectedRoom(){
+        return selectedRoom;
     }
 
 

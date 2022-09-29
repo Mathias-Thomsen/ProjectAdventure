@@ -21,10 +21,7 @@ public class Adventure {
     public Room getRoomInfo(){
         return player.getRoomInfo();
     }
-    /*public String getTakeItem(){
-        return player.takeItem();
+    public Map getMap(){
+        return map;
     }
-
-     */
-
 }

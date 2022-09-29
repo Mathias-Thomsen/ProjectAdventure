@@ -25,7 +25,8 @@ public class UserInterface {
                     break;
 
                 case "look", "l":
-                    System.out.println(adventure.getSelectedRoom().getRoomInfo() + adventure.getSelectedRoom().getItem());
+                    System.out.println(adventure.getMap().roomItems());
+                    System.out.println("Whats next?");
                     break;
 
                 case "help":
