@@ -9,10 +9,16 @@ public class UserInterface {
         System.out.println("You're start location is " + adventure.getSelectedRoom().getRoomName() + " Where do you want to go");
 
         do {
-
             userInput = scanner.nextLine();
+            String[] userListFromInput = userInput.split(" ");
+            String direction = "";
+            String command = userListFromInput[0];
+            if (userListFromInput.length > 1) {
+                direction = userListFromInput[1];
+            }
 
-            switch (userInput) {
+
+            switch (command) {
                 case "go north", "n":
                 case "go east", "e":
                 case "go south", "s":
@@ -32,16 +38,40 @@ public class UserInterface {
 
 
                 case "take":
-                    Item pickedUpItem = adventure.getSelectedRoom().removeItem(userInput);
-                    if (pickedUpItem == null) {
+                    Item itemPickUp = adventure.getSelectedRoom().removeItem(direction);
+                    if (itemPickUp == null) {
                         System.out.println("There is nothing called that..");
+                        System.out.println("Try again");
+
                     } else {
-                        System.out.println("you have picked up " + pickedUpItem);
-                        adventure.getPlayer().addItem(pickedUpItem);
+                        System.out.println("you have picked up " + itemPickUp);
+                        adventure.getPlayer().addItem(itemPickUp);
+                        System.out.println("What's next? ");
                     }
+                    break;
+
+
+                case "drop":
+                    Item itemDropped = adventure.getPlayer().removeItem(direction);
+                    if (itemDropped == null) {
+                        System.out.println("There is nothing called that..");
+                        System.out.println("Try again");
+                    } else {
+                        System.out.println("you have dropped up " + itemDropped);
+                        adventure.getPlayer().getSelectedRoom().addItem(itemDropped);
+                        System.out.println("What's next?");
+                    }
+                    break;
+
+                case "inventory":
+                    System.out.println("Your inventory contains: " + adventure.getPlayer().getItems());
+                    System.out.println("What's next?");
+                    break;
+
 
 
                 case "help":
+                    System.out.println("Print help list...");
 
                 case "exit":
                     System.exit(0);
