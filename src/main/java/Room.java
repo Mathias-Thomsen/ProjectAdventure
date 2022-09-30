@@ -63,14 +63,22 @@ public class Room {
         this.west = room;
     }
 
+    public void addItem(Item item){
+        items.add(item);
+    }
+
+    public Item removeItem(String itemName) {
+        for (Item item : items) {
+            if (item.getItemName().equals(itemName)) {
+                items.remove(item);
+                return item;
+            }
+        }
+        return null;
+    }
 
     public ArrayList<Item> getItems(){
         return items;
-    }
-
-
-    public void addItem(Item item){
-        items.add(item);
     }
 
 

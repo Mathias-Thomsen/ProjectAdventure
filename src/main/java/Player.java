@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class Player {
     private Room selectedRoom;
+    private ArrayList<Item> items = new ArrayList<>();
 
     public boolean move(String userInput){
         Room requestedRoom = null;
@@ -25,8 +26,6 @@ public class Player {
         }
     }
 
-
-
     public Room getSelectedRoom(){
         return selectedRoom;
     }
@@ -38,4 +37,26 @@ public class Player {
         return selectedRoom;
     }
 
+
+    //Items
+    public void addItem(Item item){
+        items.add(item);
+    }
+
+    public Item removeItem(String itemName) {
+        for (Item item : items) {
+            if (item.getItemName().equals(itemName)) {
+                items.remove(item);
+                return item;
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<Item> getItems(){
+        return items;
+    }
+
 }
+
+

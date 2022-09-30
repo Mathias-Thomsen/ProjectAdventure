@@ -2,7 +2,7 @@ public class Map {
 
     public Map(){
         createRoom();
-        itemMap();
+        itemMapAdding();
     }
 
     Room room1 = new Room("Room 1", "Info about Room 1: ");
@@ -25,6 +25,8 @@ public class Map {
         //Room1
         room1.setEast(room2);
         room1.setSouth(room4);
+        room1.addItem(sword);
+        room1.addItem(item2);
 
         //Room2
         room2.setEast(room3);
@@ -61,8 +63,9 @@ public class Map {
 
     }
 
-    public void itemMap(){
-        room1.addItem(sword);
+    public void itemMapAdding(){
+        /*room1.addItem(sword);
+        room1.addItem(item2);*/
     }
 
     public Room getStartRoom(){

@@ -6,7 +6,6 @@ public class Adventure {
     private Room room = new Room();
 
     public Adventure() {
-        map.createRoom();
         Room startRoom = map.getStartRoom();
         player.setSelectedRoom(startRoom);
 
