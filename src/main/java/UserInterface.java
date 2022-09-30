@@ -30,10 +30,18 @@ public class UserInterface {
                     System.out.println("Whats next?");
                     break;
 
-                case "help":
 
                 case "take":
+                    Item pickedUpItem = adventure.getSelectedRoom().removeItem(userInput);
+                    if (pickedUpItem == null) {
+                        System.out.println("There is nothing called that..");
+                    } else {
+                        System.out.println("you have picked up " + pickedUpItem);
+                        adventure.getPlayer().addItem(pickedUpItem);
+                    }
 
+
+                case "help":
 
                 case "exit":
                     System.exit(0);
