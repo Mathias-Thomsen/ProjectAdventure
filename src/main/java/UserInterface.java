@@ -32,7 +32,12 @@ public class UserInterface {
 
                 case "look", "l":
                     System.out.println(adventure.getSelectedRoom().getRoomInfo());
-                    System.out.println("Items in list:\n" + adventure.getPlayer().getSelectedRoom().getItems());
+                    System.out.println("\nItems in the room:\n" + adventure.getPlayer().getSelectedRoom().getItems());
+                    if (!adventure.getPlayer().getSelectedRoom().getFoods().isEmpty()){
+                        System.out.println("\nFoods in the room\n" + adventure.getPlayer().getSelectedRoom().getFoods() + "\n");
+                    } else {
+                        System.out.println("\nThere is no food in the current room");
+                    }
                     System.out.println("Whats next?");
                     break;
 
@@ -63,12 +68,24 @@ public class UserInterface {
                     }
                     break;
 
-                case "inventory":
+                case "inventory", "inv":
                     System.out.println("Your inventory contains: " + adventure.getPlayer().getItems());
                     System.out.println("What's next?");
                     break;
 
 
+                case "eat":
+                    Food eatFood = adventure.getSelectedRoom().eatFood(direction);
+                    if (eatFood == null) {
+                        System.out.println("There is nothing called that..");
+                        System.out.println("Try again");
+
+                    } else {
+                        System.out.println("you have eaten " + eatFood);
+                        adventure.getPlayer().addFood(eatFood);
+                        System.out.println("What's next? ");
+                    }
+                    break;
 
                 case "help":
                     System.out.println("Print help list...");

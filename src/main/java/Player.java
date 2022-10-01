@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Player {
     private Room selectedRoom;
     private ArrayList<Item> items = new ArrayList<>();
+    private ArrayList<Food> foods = new ArrayList<>();
 
     public boolean move(String userInput){
         Room requestedRoom = null;
@@ -55,6 +56,25 @@ public class Player {
 
     public ArrayList<Item> getItems(){
         return items;
+    }
+
+
+    public void addFood(Food food){
+        foods.add(food);
+    }
+
+    public Food eatFood(String foodName) {
+        for (Food food : foods) {
+            if (food.getFoodName().equals(foodName)) {
+                foods.remove(food);
+                return food;
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<Food> getFoods(){
+        return foods;
     }
 
 }

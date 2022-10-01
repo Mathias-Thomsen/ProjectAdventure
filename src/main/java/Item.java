@@ -15,7 +15,7 @@ public class Item {
 
     //Getter
     public String getItemName(){
-        return itemName;
+        return itemName.toLowerCase();
     }
 
     public String getItemDescription(){

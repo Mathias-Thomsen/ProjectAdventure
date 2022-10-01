@@ -2,7 +2,6 @@ public class Map {
 
     public Map(){
         createRoom();
-        itemMapAdding();
     }
 
     Room room1 = new Room("Room 1", "Info about Room 1: ");
@@ -20,13 +19,17 @@ public class Map {
     private Item item3 = new Item("itemName3");
     private Item sword = new Item("Sword");
 
+    private Food aeble = new Food("Æble");
+    private Food banan = new Food("Banan");
+
     public void createRoom(){
 
         //Room1
         room1.setEast(room2);
         room1.setSouth(room4);
         room1.addItem(sword);
-        room1.addItem(item2);
+        room1.addFood(aeble);
+        room1.addFood(banan);
 
         //Room2
         room2.setEast(room3);
@@ -63,10 +66,6 @@ public class Map {
 
     }
 
-    public void itemMapAdding(){
-        /*room1.addItem(sword);
-        room1.addItem(item2);*/
-    }
 
     public Room getStartRoom(){
         return room1;
