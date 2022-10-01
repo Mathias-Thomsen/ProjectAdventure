@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -7,6 +8,7 @@ public class UserInterface {
         Adventure adventure = new Adventure();
         String userInput;
         System.out.println("You're start location is " + adventure.getSelectedRoom().getRoomName() + " Where do you want to go");
+        int currentHealth = 100;
 
         do {
             userInput = scanner.nextLine();
@@ -44,14 +46,19 @@ public class UserInterface {
 
                 case "take":
                     Item itemPickUp = adventure.getSelectedRoom().removeItem(direction);
-                    if (itemPickUp == null) {
+                    Food takeFood = adventure.getSelectedRoom().eatFood(direction);
+                    if (itemPickUp == null && takeFood == null) {
                         System.out.println("There is nothing called that..");
                         System.out.println("Try again");
 
-                    } else {
+                    } else if(itemPickUp != null) {
                         System.out.println("you have picked up " + itemPickUp);
                         adventure.getPlayer().addItem(itemPickUp);
                         System.out.println("What's next? ");
+                    } else {
+                        System.out.println("you have picked up " + takeFood);
+                        adventure.getPlayer().addFood(takeFood);
+                        System.out.println("Whats next?");
                     }
                     break;
 
@@ -70,21 +77,36 @@ public class UserInterface {
 
                 case "inventory", "inv":
                     System.out.println("Your inventory contains: " + adventure.getPlayer().getItems());
+                    System.out.println("Your foods: " + adventure.getPlayer().getFoods());
                     System.out.println("What's next?");
                     break;
 
 
                 case "eat":
-                    Food eatFood = adventure.getSelectedRoom().eatFood(direction);
-                    if (eatFood == null) {
+                    Food eatFoodFromRoom = adventure.getSelectedRoom().eatFood(direction);
+                    Food eatFoodFromInv = adventure.getPlayer().eatFood(direction);
+                    if (eatFoodFromRoom == null && eatFoodFromInv == null) {
                         System.out.println("There is nothing called that..");
                         System.out.println("Try again");
 
                     } else {
-                        System.out.println("you have eaten " + eatFood);
-                        adventure.getPlayer().addFood(eatFood);
+                        if (eatFoodFromRoom == null){
+                            System.out.println("you have eaten " + eatFoodFromInv);
+                        } if (eatFoodFromInv == null){
+                            System.out.println("you have eaten " + eatFoodFromRoom);
+                        }
+                        currentHealth = currentHealth + 20;
+                        System.out.println("Your health is increasing by 20");
+                        System.out.println("Your current health is now: " +  currentHealth);
                         System.out.println("What's next? ");
                     }
+                    break;
+
+
+
+                case "show health", "health":
+                    System.out.println("Your current health is: " + currentHealth);
+                    System.out.println("Whats next?");
                     break;
 
                 case "help":
