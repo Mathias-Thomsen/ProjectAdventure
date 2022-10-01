@@ -8,7 +8,7 @@ public class UserInterface {
         Adventure adventure = new Adventure();
         String userInput;
         System.out.println("You're start location is " + adventure.getSelectedRoom().getRoomName() + " Where do you want to go");
-        int currentHealth = 100;
+        int currentHealth = 20;
 
         do {
             userInput = scanner.nextLine();
@@ -97,7 +97,11 @@ public class UserInterface {
                         }
                         currentHealth = currentHealth + 20;
                         System.out.println("Your health is increasing by 20");
-                        System.out.println("Your current health is now: " +  currentHealth);
+                        if (currentHealth >= 50){
+                            System.out.println("Your current health is now: " +  currentHealth + ", You are in good health stay above 50!");
+                        } else if(currentHealth < 50) {
+                            System.out.println("Your current health is now: " +  currentHealth + ", Your health is low, keep eating!");
+                        }
                         System.out.println("What's next? ");
                     }
                     break;
