@@ -2,13 +2,22 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserInterface {
+    Adventure adventure = new Adventure();
+    int currentHealth = 50;
+
+    public void setCurrentHealth(){
+        if (currentHealth >= 50){
+            System.out.println("Your current health is now: " +  currentHealth + ", You are in good health stay above 50!");
+        } else if(currentHealth < 50) {
+            System.out.println("Your current health is now: " +  currentHealth + ", Your health is low, keep eating!");
+        }
+
+    }
 
     public void user() {
         Scanner scanner = new Scanner(System.in);
-        Adventure adventure = new Adventure();
         String userInput;
         System.out.println("You're start location is " + adventure.getSelectedRoom().getRoomName() + " Where do you want to go");
-        int currentHealth = 20;
 
         do {
             userInput = scanner.nextLine();
@@ -88,7 +97,6 @@ public class UserInterface {
                     if (eatFoodFromRoom == null && eatFoodFromInv == null) {
                         System.out.println("There is nothing called that..");
                         System.out.println("Try again");
-
                     } else {
                         if (eatFoodFromRoom == null){
                             System.out.println("you have eaten " + eatFoodFromInv);
@@ -97,11 +105,7 @@ public class UserInterface {
                         }
                         currentHealth = currentHealth + 20;
                         System.out.println("Your health is increasing by 20");
-                        if (currentHealth >= 50){
-                            System.out.println("Your current health is now: " +  currentHealth + ", You are in good health stay above 50!");
-                        } else if(currentHealth < 50) {
-                            System.out.println("Your current health is now: " +  currentHealth + ", Your health is low, keep eating!");
-                        }
+                        setCurrentHealth();
                         System.out.println("What's next? ");
                     }
                     break;

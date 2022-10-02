@@ -19,8 +19,9 @@ public class Map {
     private Item item3 = new Item("itemName3");
     private Item sword = new Item("Sword");
 
-    private Food aeble = new Food("Æble");
-    private Food banan = new Food("Banan");
+    private Food aeble = new Food("Æble", true);
+    private Food banan = new Food("Banan", true);
+    private Food fisk = new Food("Fisk", false);
 
     public void createRoom(){
 
@@ -30,6 +31,7 @@ public class Map {
         room1.addItem(sword);
         room1.addFood(aeble);
         room1.addFood(banan);
+        room1.addFood(fisk);
 
         //Room2
         room2.setEast(room3);

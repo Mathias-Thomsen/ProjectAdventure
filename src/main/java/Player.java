@@ -4,6 +4,7 @@ public class Player {
     private Room selectedRoom;
     private ArrayList<Item> items = new ArrayList<>();
     private ArrayList<Food> foods = new ArrayList<>();
+    private Food food = new Food();
 
     public boolean move(String userInput){
         Room requestedRoom = null;
@@ -76,6 +77,8 @@ public class Player {
     public ArrayList<Food> getFoods(){
         return foods;
     }
+
+
 
 }
 
