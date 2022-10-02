@@ -19,9 +19,9 @@ public class Map {
     private Item item3 = new Item("itemName3");
     private Item sword = new Item("Sword");
 
-    private Food aeble = new Food("Æble", true);
-    private Food banan = new Food("Banan", true);
-    private Food fisk = new Food("Fisk", false);
+    private Food aeble = new Food("Æble");
+    private Food banan = new Food("Banan");
+    private Food fisk = new Food("Fisk");
 
     public void createRoom(){
 
