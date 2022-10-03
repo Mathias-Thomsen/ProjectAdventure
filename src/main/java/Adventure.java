@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Adventure {
     private Player player = new Player();
     private Map map = new Map();
-    private Room room = new Room();
+
 
     public Adventure() {
         Room startRoom = map.getStartRoom();
