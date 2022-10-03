@@ -22,14 +22,6 @@ public class Item {
         return itemDescription;
     }
 
-    //Setter
-    public void setItemName(){
-        this.itemName = itemName;
-    }
-
-    public void setItemDescription(){
-        this.itemDescription = itemDescription;
-    }
 
     //toString
     @Override

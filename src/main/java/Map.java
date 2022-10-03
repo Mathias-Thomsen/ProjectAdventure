@@ -14,14 +14,19 @@ public class Map {
     Room room8 = new Room("Room 8", "Info about Room 8");
     Room room9 = new Room("Room 9", "Info about Room 9");
 
-    private Item item1 = new Item("Sword");
-    private Item item2 = new Item("Food");
-    private Item item3 = new Item("itemName3");
+
+
     private Item sword = new Item("Sword");
+    private Item flashLight = new Item("Flashlight");
+    private Item key = new Item("Key");
+    private Item knife = new Item("Knife");
+    private Item drill = new Item("Drill");
 
     private Food aeble = new Food("Æble");
     private Food banan = new Food("Banan");
     private Food fisk = new Food("Fisk");
+    private Food meat = new Food("Meat");
+    private Food beer = new Food("Budweiser");
 
     public void createRoom(){
 
@@ -34,22 +39,24 @@ public class Map {
         room1.addFood(fisk);
 
         //Room2
-        room2.setEast(room3);
         room2.setWest(room1);
-        room2.addItem(item2);
+        room2.addItem(flashLight);
 
         //Room3
         room3.setSouth(room6);
-        room3.setWest(room2);
+        room3.addItem(key);
+        room3.addFood(beer);
 
         //Room4
         room4.setNorth(room1);
         room4.setEast(room5);
         room4.setSouth(room7);
+        room4.addFood(meat);
 
         //Room5
         room5.setEast(room6);
         room5.setWest(room4);
+        room5.addItem(knife);
 
         //Room6
         room6.setNorth(room3);
@@ -58,6 +65,7 @@ public class Map {
 
         //Room7
         room7.setNorth(room4);
+        room7.addItem(drill);
 
         //Room8
         room8.setEast(room9);

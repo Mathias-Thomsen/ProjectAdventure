@@ -43,9 +43,9 @@ public class UserInterface {
 
                 case "look", "l":
                     System.out.println(adventure.getSelectedRoom().getRoomInfo());
-                    System.out.println("\nItems in the room:\n" + adventure.getPlayer().getSelectedRoom().getItems());
+                    System.out.println("\nItems in the room:\n" + adventure.getPlayer().getSelectedRoom().getItems()); // TODO print getItemInfo
                     if (!adventure.getPlayer().getSelectedRoom().getFoods().isEmpty()){
-                        System.out.println("\nFoods in the room\n" + adventure.getPlayer().getSelectedRoom().getFoods() + "\n");
+                        System.out.println("\nFoods in the room\n" + adventure.getPlayer().getSelectedRoom().getFoods() + "\n"); // TODO print getFoodInfo
                     } else {
                         System.out.println("\nThere is no food in the current room");
                     }
@@ -85,7 +85,7 @@ public class UserInterface {
                     break;
 
                 case "inventory", "inv":
-                    System.out.println("Your inventory contains: " + adventure.getPlayer().getItems());
+                    System.out.println("Your inventory contains: " + adventure.getPlayer().getInventory());
                     System.out.println("Your foods: " + adventure.getPlayer().getFoods());
                     System.out.println("What's next?");
                     break;
@@ -93,7 +93,7 @@ public class UserInterface {
 
                 case "eat":
                     Food eatFoodFromRoom = adventure.getSelectedRoom().eatFood(direction);
-                    Food eatFoodFromInv = adventure.getPlayer().eatFood(direction);
+                    Food eatFoodFromInv = adventure.getPlayer().eatFoodFromInv(direction);
                     if (eatFoodFromRoom == null && eatFoodFromInv == null) {
                         System.out.println("There is nothing called that..");
                         System.out.println("Try again");
@@ -109,8 +109,6 @@ public class UserInterface {
                         System.out.println("What's next? ");
                     }
                     break;
-
-
 
                 case "show health", "health":
                     System.out.println("Your current health is: " + currentHealth);

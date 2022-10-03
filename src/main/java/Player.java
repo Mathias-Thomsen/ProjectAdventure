@@ -2,9 +2,8 @@ import java.util.ArrayList;
 
 public class Player {
     private Room selectedRoom;
-    private ArrayList<Item> items = new ArrayList<>();
+    private ArrayList<Item> inventory = new ArrayList<>();
     private ArrayList<Food> foods = new ArrayList<>();
-    private Food food = new Food();
 
     public boolean move(String userInput){
         Room requestedRoom = null;
@@ -42,21 +41,21 @@ public class Player {
 
     //Items
     public void addItem(Item item){
-        items.add(item);
+        inventory.add(item);
     }
 
     public Item removeItem(String itemName) {
-        for (Item item : items) {
+        for (Item item : inventory) {
             if (item.getItemName().equals(itemName)) {
-                items.remove(item);
+                inventory.remove(item);
                 return item;
             }
         }
         return null;
     }
 
-    public ArrayList<Item> getItems(){
-        return items;
+    public ArrayList<Item> getInventory(){
+        return inventory;
     }
 
 
@@ -64,7 +63,7 @@ public class Player {
         foods.add(food);
     }
 
-    public Food eatFood(String foodName) {
+    public Food eatFoodFromInv(String foodName) {
         for (Food food : foods) {
             if (food.getFoodName().equals(foodName)) {
                 foods.remove(food);
