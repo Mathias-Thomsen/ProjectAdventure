@@ -9,6 +9,7 @@ public class Room {
     private Room east;
     private Room south;
     private Room west;
+    private Food food = new Food();
 
 
     public Room(String roomName, String roomInfo){
@@ -101,7 +102,9 @@ public class Room {
     public ArrayList<Food> getFoods(){
         return foods;
     }
-
+    public boolean food(){
+        return food.isHealthyOrNot();
+    }
 
 
 

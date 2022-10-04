@@ -22,11 +22,11 @@ public class Map {
     private Item knife = new Item("Knife");
     private Item drill = new Item("Drill");
 
-    private Food aeble = new Food("Æble");
-    private Food banan = new Food("Banan");
-    private Food fisk = new Food("Fisk");
-    private Food meat = new Food("Meat");
-    private Food beer = new Food("Budweiser");
+    private Food aeble = new Food("Æble",true, "Fresh");
+    private Food banan = new Food("Banan",false, "Rotten");
+    private Food fisk = new Food("Fisk", false, "Raw");
+    private Food meat = new Food("Meat",false, "Cooked");
+    private Food beer = new Food("Budweiser",false, "Can of beer");
 
     public void createRoom(){
 

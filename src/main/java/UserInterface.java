@@ -98,16 +98,23 @@ public class UserInterface {
                         System.out.println("There is nothing called that..");
                         System.out.println("Try again");
                     } else {
-                        if (eatFoodFromRoom == null){
+                        if (eatFoodFromRoom == null) {
                             System.out.println("you have eaten " + eatFoodFromInv);
-                        } if (eatFoodFromInv == null){
+                        }
+                        if (eatFoodFromInv == null) {
                             System.out.println("you have eaten " + eatFoodFromRoom);
                         }
-                        currentHealth = currentHealth + 20;
-                        System.out.println("Your health is increasing by 20");
-                        setCurrentHealth();
-                        System.out.println("What's next? ");
                     }
+                    if (eatFoodFromRoom.isHealthyOrNot()){
+                        currentHealth = currentHealth + 20;
+                    System.out.println("your current health is increased by 20 to "+ currentHealth);
+                    } else {currentHealth = currentHealth - 20;
+                    System.out.println("your current health is decreasing by 20 to "+ currentHealth);
+                        }
+                    if (currentHealth <= 0){
+                    System.out.println("you have no more health, you died"+"\uD83D\uDC80");
+                    System.exit(0);
+                }
                     break;
 
                 case "show health", "health":
@@ -126,7 +133,7 @@ public class UserInterface {
     }
 
     public void start() {
-        System.out.println("Welcome to Adventure Game");
+        System.out.println("Welcome to the Mystery of the Basement");
         System.out.println("---------------------------");
         user();
     }

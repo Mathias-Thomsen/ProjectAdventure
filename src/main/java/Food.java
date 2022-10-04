@@ -4,13 +4,10 @@ public class Food {
     private boolean healthyOrNot;
 
 
-    public Food(String foodName){
-        this.foodName = foodName;
-    }
-
-    public Food(String foodName, boolean healthyOrNot){
+    public Food(String foodName, boolean healthyOrNot, String foodDescription){
         this.foodName = foodName;
         this.healthyOrNot = healthyOrNot;
+        this.foodDescription = foodDescription;
     }
 
     public Food(){
@@ -26,7 +23,7 @@ public class Food {
     }
 
     public String toString(){
-        return foodName;
+        return foodDescription+": "+foodName;
     }
 
 }

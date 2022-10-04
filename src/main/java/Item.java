@@ -24,7 +24,6 @@ public class Item {
 
 
     //toString
-    @Override
     public String toString() {
         return itemName;
     }
