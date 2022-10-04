@@ -17,7 +17,11 @@ public class UserInterface {
     public void user() {
         Scanner scanner = new Scanner(System.in);
         String userInput;
-        System.out.println("You're start location is " + adventure.getSelectedRoom().getRoomName() + " Where do you want to go");
+        System.out.println("Access Game Guide during the game by typing: help");
+        System.out.println("Press enter to start the game");
+        try{System.in.read();}
+            catch(Exception e){}
+        System.out.println("Your start location is " + adventure.getSelectedRoom().getRoomName()+ adventure.getSelectedRoom().getRoomInfo()+ "\nWhats next?");
 
         do {
             userInput = scanner.nextLine();
@@ -123,7 +127,21 @@ public class UserInterface {
                     break;
 
                 case "help":
-                    System.out.println("Print help list...");
+                    System.out.println("""
+                    Game guide:
+                    ---------------------------------------------------------
+                    Commands:
+                    to move: "go" and "direction" north, south, west or east.
+                    to see location: "look"
+                    to pickup: "take" and "item name"
+                    to drop: "drop" and "item name"
+                    to see inventory: "inventory"
+                    to consume a food "eat" and "item name"
+                    to see health: "health"
+                    
+                    whats next?
+                     """);
+                    break;
 
                 case "exit":
                     System.exit(0);
@@ -133,8 +151,8 @@ public class UserInterface {
     }
 
     public void start() {
-        System.out.println("Welcome to the Mystery of the Basement");
-        System.out.println("---------------------------");
+        System.out.println("\u001B[31m"+"\n\uD83D\uDD2A\uD83E\uDE78Welcome to the Mystery of Dohmers Basement\uD83E\uDE78\uD83D\uDD2A");
+        System.out.println("--------------------------------------------------\n");
         user();
     }
 }

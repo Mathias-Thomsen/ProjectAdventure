@@ -4,28 +4,25 @@ public class Map {
         createRoom();
     }
 
-    Room room1 = new Room("Room 1", "Info about Room 1: ");
-    Room room2 = new Room("Room 2", "Info about Room 2");
-    Room room3 = new Room("Room 3", "Info about Room 3");
-    Room room4 = new Room("Room 4", "Info about Room 4");
-    Room room5 = new Room("Room 5", "Info about Room 5");
-    Room room6 = new Room("Room 6", "Info about Room 6");
-    Room room7 = new Room("Room 7", "Info about Room 7");
-    Room room8 = new Room("Room 8", "Info about Room 8");
-    Room room9 = new Room("Room 9", "Info about Room 9");
+    Room room1 = new Room("a empty room \n", "The room contains nothing and there is little to no light, \nbut you can see two doors one towards east and one towards south");
+    Room room2 = new Room("a shady bathroom ", "bathroom with a old table and a broken sink containing a flashlight");
+    Room room3 = new Room("a large bedroom", "");
+    Room room4 = new Room("a dark room ","The room is filled with a horrible rotten smell, but so dark that nothing is visual");
+    Room room5 = new Room("a long hall", "a long hall with grey pictures on the walls and a small drawer");
+    Room room6 = new Room("a tunnel", "a narrow tunnel leading two ways");
+    Room room7 = new Room("a bedroom", "a small bedroom containing a small bed");
+    Room room8 = new Room("stairs", "stairs leading outside towards south");
+    Room room9 = new Room("boss", "Jeff Dohmer");
 
 
 
-    private Item sword = new Item("Sword");
     private Item flashLight = new Item("Flashlight");
     private Item key = new Item("Key");
     private Item knife = new Item("Knife");
     private Item drill = new Item("Drill");
 
-    private Food aeble = new Food("Æble",true, "Fresh");
-    private Food banan = new Food("Banan",false, "Rotten");
-    private Food fisk = new Food("Fisk", false, "Raw");
-    private Food meat = new Food("Meat",false, "Cooked");
+    private Food cheese = new Food("cheese", true, "smelly");
+    private Food meat = new Food("Meat",true, "Cooked");
     private Food beer = new Food("Budweiser",false, "Can of beer");
 
     public void createRoom(){
@@ -33,10 +30,8 @@ public class Map {
         //Room1
         room1.setEast(room2);
         room1.setSouth(room4);
-        room1.addItem(sword);
-        room1.addFood(aeble);
-        room1.addFood(banan);
-        room1.addFood(fisk);
+
+
 
         //Room2
         room2.setWest(room1);
@@ -66,6 +61,7 @@ public class Map {
         //Room7
         room7.setNorth(room4);
         room7.addItem(drill);
+        room7.addFood(cheese);
 
         //Room8
         room8.setEast(room9);
