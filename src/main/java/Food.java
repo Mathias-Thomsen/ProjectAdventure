@@ -14,7 +14,7 @@ public class Food extends Item {
 
 
     public String toString(){
-        return getItemDescription()+": "+getItemName();
+        return getItemDescription();
     }
 
 }

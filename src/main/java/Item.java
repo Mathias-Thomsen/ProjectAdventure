@@ -4,6 +4,9 @@ public class Item {
    private String itemName;
    private String itemDescription;
 
+   public Item(){
+   }
+
     public Item(String itemName){
         this.itemName = itemName;
     }
@@ -25,7 +28,7 @@ public class Item {
 
     //toString
     public String toString() {
-        return itemName;
+        return  itemName;
     }
 
 

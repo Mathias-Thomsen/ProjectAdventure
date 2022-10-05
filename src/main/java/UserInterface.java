@@ -25,8 +25,11 @@ public class UserInterface {
             String[] userListFromInput = userInput.split(" ");
             String direction = "";
             String command = userListFromInput[0];
-            if (userListFromInput.length > 1) {
+            if (userListFromInput.length == 2) {
                 direction = userListFromInput[1];
+            }
+            else if (userListFromInput.length > 2){
+                direction = userListFromInput[2];
             }
 
 

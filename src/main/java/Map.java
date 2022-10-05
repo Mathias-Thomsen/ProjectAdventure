@@ -16,10 +16,10 @@ public class Map {
 
 
 
-    private Item flashLight = new Item("Flashlight", "containing a flashlight");
-    private Item key = new Item("Key");
-    private Item knife = new Item("Knife", "a big sharp knife");
-    private Item drill = new Item("Drill", "a bloody drill with brain residue");
+    private Item flashLight = new Item("Flashlight", "old flashlight");
+    private Item key = new Item("Key", "Key");
+    private Item knife = new Item("Knife", "big sharp knife");
+    private Item drill = new Item("Drill", "bloody drill with brain residue");
 
     private Food cheese = new Food("cheese", "smelly cheese", true );
     private Food meat = new Food("Meat", "Cooked meat", true );
