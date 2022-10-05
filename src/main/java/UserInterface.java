@@ -63,7 +63,7 @@ public class UserInterface {
                     } else {
                         System.out.println("you have picked up " + itemPickUp);
                         adventure.getPlayer().addItem(itemPickUp);
-                        System.out.println("What's next? ");
+                        System.out.println("What's next ? ");
                     }
                     break;
 
