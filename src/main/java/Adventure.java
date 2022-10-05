@@ -23,11 +23,5 @@ public class Adventure {
     }
 
 
-    public Room getRoomInfo(){
-        return player.getRoomInfo();
-    }
-    public Map getMap(){
-        return map;
-    }
 
 }

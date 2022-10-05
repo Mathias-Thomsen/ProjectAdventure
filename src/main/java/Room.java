@@ -2,14 +2,13 @@ import java.util.ArrayList;
 
 public class Room {
     private ArrayList<Item> items = new ArrayList<>();
-    private ArrayList<Food> foods = new ArrayList<>();
     private String roomName;
     private String roomInfo;
     private Room north;
     private Room east;
     private Room south;
     private Room west;
-    private Food food = new Food();
+
 
 
     public Room(String roomName, String roomInfo){
@@ -17,8 +16,7 @@ public class Room {
         this.roomInfo = roomInfo;
     }
 
-    public Room(){
-    }
+
 
 
     public String getRoomName(){
@@ -82,30 +80,6 @@ public class Room {
     public ArrayList<Item> getItems(){
         return items;
     }
-
-    //Foods
-
-    public void addFood(Food food){
-        foods.add(food);
-    }
-
-    public Food eatFood(String foodName) {
-        for (Food food : foods) {
-            if (food.getFoodName().equals(foodName)) {
-                foods.remove(food);
-                return food;
-            }
-        }
-        return null;
-    }
-
-    public ArrayList<Food> getFoods(){
-        return foods;
-    }
-    public boolean food(){
-        return food.isHealthyOrNot();
-    }
-
 
 
 }

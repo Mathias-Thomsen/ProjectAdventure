@@ -3,18 +3,18 @@ import java.util.ArrayList;
 public class Player {
     private Room selectedRoom;
     private ArrayList<Item> inventory = new ArrayList<>();
-    private ArrayList<Food> foods = new ArrayList<>();
+    //private ArrayList<Food> foods = new ArrayList<>();
 
     public boolean move(String userInput){
         Room requestedRoom = null;
 
-        if(userInput.equals("go north") || userInput.charAt(0) == 'n') {
+        if(userInput.equals("go north") || userInput.equals("go n") || userInput.charAt(0) == 'n') {
             requestedRoom = selectedRoom.getNorth();
-        } else if (userInput.equals("go east") || userInput.charAt(0) == 'e') {
+        } else if (userInput.equals("go east") || userInput.equals("go e") || userInput.charAt(0) == 'e') {
             requestedRoom = selectedRoom.getEast();
-        } else if (userInput.equals("go south") || userInput.charAt(0) == 's') {
+        } else if (userInput.equals("go south") || userInput.equals("go s") || userInput.charAt(0) == 's') {
             requestedRoom = selectedRoom.getSouth();
-        } else if (userInput.equals("go west") || userInput.charAt(0) == 'w') {
+        } else if (userInput.equals("go west") || userInput.equals("go w") || userInput.charAt(0) == 'w') {
             requestedRoom = selectedRoom.getWest();
         }
 
@@ -59,23 +59,6 @@ public class Player {
     }
 
 
-    public void addFood(Food food){
-        foods.add(food);
-    }
-
-    public Food eatFoodFromInv(String foodName) {
-        for (Food food : foods) {
-            if (food.getFoodName().equals(foodName)) {
-                foods.remove(food);
-                return food;
-            }
-        }
-        return null;
-    }
-
-    public ArrayList<Food> getFoods(){
-        return foods;
-    }
 
 
 

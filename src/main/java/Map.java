@@ -5,7 +5,7 @@ public class Map {
     }
 
     Room room1 = new Room("a empty room \n", "The room contains nothing and there is little to no light, \nbut you can see two doors one towards east and one towards south");
-    Room room2 = new Room("a shady bathroom ", "bathroom with a old table and a broken sink containing a flashlight");
+    Room room2 = new Room("a shady bathroom ", "bathroom with a old table and a broken sink ");
     Room room3 = new Room("a large bedroom", "");
     Room room4 = new Room("a dark room ","The room is filled with a horrible rotten smell, but so dark that nothing is visual");
     Room room5 = new Room("a long hall", "a long hall with grey pictures on the walls and a small drawer");
@@ -16,14 +16,14 @@ public class Map {
 
 
 
-    private Item flashLight = new Item("Flashlight");
+    private Item flashLight = new Item("Flashlight", "containing a flashlight");
     private Item key = new Item("Key");
-    private Item knife = new Item("Knife");
-    private Item drill = new Item("Drill");
+    private Item knife = new Item("Knife", "a big sharp knife");
+    private Item drill = new Item("Drill", "a bloody drill with brain residue");
 
-    private Food cheese = new Food("cheese", true, "smelly");
-    private Food meat = new Food("Meat",true, "Cooked");
-    private Food beer = new Food("Budweiser",false, "Can of beer");
+    private Food cheese = new Food("cheese", "smelly cheese", true );
+    private Food meat = new Food("Meat", "Cooked meat", true );
+    private Drink beer = new Drink("Budweiser", "Can of budweiser", false);
 
     public void createRoom(){
 
@@ -40,13 +40,13 @@ public class Map {
         //Room3
         room3.setSouth(room6);
         room3.addItem(key);
-        room3.addFood(beer);
+        room3.addItem(beer);
 
         //Room4
         room4.setNorth(room1);
         room4.setEast(room5);
         room4.setSouth(room7);
-        room4.addFood(meat);
+        room4.addItem(meat);
 
         //Room5
         room5.setEast(room6);
@@ -61,7 +61,7 @@ public class Map {
         //Room7
         room7.setNorth(room4);
         room7.addItem(drill);
-        room7.addFood(cheese);
+        room7.addItem(cheese);
 
         //Room8
         room8.setEast(room9);

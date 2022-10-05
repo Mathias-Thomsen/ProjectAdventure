@@ -1,29 +1,20 @@
-public class Food {
-    private String foodName;
-    private String foodDescription;
-    private boolean healthyOrNot;
+public class Food extends Item {
+    private boolean healthy;
 
 
-    public Food(String foodName, boolean healthyOrNot, String foodDescription){
-        this.foodName = foodName;
-        this.healthyOrNot = healthyOrNot;
-        this.foodDescription = foodDescription;
+    public Food(String itemName, String itemDescription, boolean healthy){
+        super(itemName, itemDescription);
+        this.healthy = healthy;
+
     }
 
-    public Food(){
+    public boolean isHealthy(){
+        return healthy;
     }
 
-    public boolean isHealthyOrNot(){
-        return healthyOrNot;
-    }
-
-
-    public String getFoodName(){
-        return foodName.toLowerCase();
-    }
 
     public String toString(){
-        return foodDescription+": "+foodName;
+        return getItemDescription()+": "+getItemName();
     }
 
 }

@@ -3,7 +3,9 @@ import java.util.Scanner;
 
 public class UserInterface {
     Adventure adventure = new Adventure();
+    Scanner scanner = new Scanner(System.in);
     int currentHealth = 50;
+    private String userInput;
 
     public void setCurrentHealth(){
         if (currentHealth >= 50){
@@ -15,12 +17,7 @@ public class UserInterface {
     }
 
     public void user() {
-        Scanner scanner = new Scanner(System.in);
-        String userInput;
-        System.out.println("Access Game Guide during the game by typing: help");
-        System.out.println("Press enter to start the game");
-        try{System.in.read();}
-            catch(Exception e){}
+
         System.out.println("Your start location is " + adventure.getSelectedRoom().getRoomName()+ adventure.getSelectedRoom().getRoomInfo()+ "\nWhats next?");
 
         do {
@@ -34,24 +31,23 @@ public class UserInterface {
 
 
             switch (command) {
-                case "go north", "n":
-                case "go east", "e":
-                case "go south", "s":
-                case "go west", "w":
+                case "go", "go n", "go e", "go s", "go w", "go north", "go east", "go south", "go west", "n", "e", "s", "w":
+
                     if (adventure.go(userInput)) {
-                        System.out.println("You are now in: " + adventure.getSelectedRoom().getRoomName() + " Whats next?");
-                    } else {
+                        System.out.println("You are now in: " + adventure.getSelectedRoom().getRoomName() + "\nWhats next?");
+                    }
+                    else {
                         System.out.println("You can not go that way");
                     }
                     break;
 
                 case "look", "l":
                     System.out.println(adventure.getSelectedRoom().getRoomInfo());
-                    System.out.println("\nItems in the room:\n" + adventure.getPlayer().getSelectedRoom().getItems()); // TODO print getItemInfo
-                    if (!adventure.getPlayer().getSelectedRoom().getFoods().isEmpty()){
-                        System.out.println("\nFoods in the room\n" + adventure.getPlayer().getSelectedRoom().getFoods() + "\n"); // TODO print getFoodInfo
-                    } else {
-                        System.out.println("\nThere is no food in the current room");
+
+                    if (!adventure.getSelectedRoom().getItems().isEmpty()){
+                        for (Item item : adventure.getSelectedRoom().getItems()) {
+                            System.out.println("This room contains a " + item.getItemDescription());
+                        }
                     }
                     System.out.println("Whats next?");
                     break;
@@ -59,19 +55,14 @@ public class UserInterface {
 
                 case "take":
                     Item itemPickUp = adventure.getSelectedRoom().removeItem(direction);
-                    Food takeFood = adventure.getSelectedRoom().eatFood(direction);
-                    if (itemPickUp == null && takeFood == null) {
+                    if (itemPickUp == null) {
                         System.out.println("There is nothing called that..");
                         System.out.println("Try again");
 
-                    } else if(itemPickUp != null) {
+                    } else {
                         System.out.println("you have picked up " + itemPickUp);
                         adventure.getPlayer().addItem(itemPickUp);
                         System.out.println("What's next? ");
-                    } else {
-                        System.out.println("you have picked up " + takeFood);
-                        adventure.getPlayer().addFood(takeFood);
-                        System.out.println("Whats next?");
                     }
                     break;
 
@@ -90,36 +81,141 @@ public class UserInterface {
 
                 case "inventory", "inv":
                     System.out.println("Your inventory contains: " + adventure.getPlayer().getInventory());
-                    System.out.println("Your foods: " + adventure.getPlayer().getFoods());
                     System.out.println("What's next?");
                     break;
 
 
                 case "eat":
-                    Food eatFoodFromRoom = adventure.getSelectedRoom().eatFood(direction);
-                    Food eatFoodFromInv = adventure.getPlayer().eatFoodFromInv(direction);
+                    Item eatFoodFromRoom = adventure.getSelectedRoom().removeItem(direction);
+                    Item eatFoodFromInv = adventure.getPlayer().removeItem(direction);
+
                     if (eatFoodFromRoom == null && eatFoodFromInv == null) {
-                        System.out.println("There is nothing called that..");
-                        System.out.println("Try again");
-                    } else {
-                        if (eatFoodFromRoom == null) {
-                            System.out.println("you have eaten " + eatFoodFromInv);
-                        }
-                        if (eatFoodFromInv == null) {
+                        System.out.println("There is nothing you can eat..");
+                        break;
+                    }
+
+                    if (eatFoodFromRoom != null) {
+
+                        if (eatFoodFromRoom instanceof Food) {
                             System.out.println("you have eaten " + eatFoodFromRoom);
+
+
+                            if (((Food) eatFoodFromRoom).isHealthy()){
+                                currentHealth = currentHealth + 20;
+                                System.out.println("your current health is increased by 20 to "+ currentHealth);
+                                setCurrentHealth();
+                            } else {
+                                currentHealth = currentHealth - 20;
+                                System.out.println("your current health is decreasing by 20 to " + currentHealth);
+                                setCurrentHealth();
+                            }
+                            if (currentHealth <= 0){
+                                System.out.println("you have no more health, you died"+"\uD83D\uDC80");
+                                System.exit(0);
+                            }
+                            System.out.println("What's next? ");
+                            break;
+
+                        }else {
+                            System.out.println("You can not eat that!");
+                            System.out.println("What's next? ");
+                            break;
                         }
                     }
-                    if (eatFoodFromRoom.isHealthyOrNot()){
-                        currentHealth = currentHealth + 20;
-                    System.out.println("your current health is increased by 20 to "+ currentHealth);
-                    } else {currentHealth = currentHealth - 20;
-                    System.out.println("your current health is decreasing by 20 to "+ currentHealth);
+
+                    else if (eatFoodFromInv != null) {
+
+                        if (eatFoodFromInv instanceof Food) {
+                            System.out.println("you have eaten " + eatFoodFromInv);
+
+                            if (((Food) eatFoodFromInv).isHealthy()){
+                                currentHealth = currentHealth + 20;
+                                System.out.println("your current health is increased by 20 to "+ currentHealth);
+                                setCurrentHealth();
+                            } else {
+                                currentHealth = currentHealth - 20;
+                                System.out.println("your current health is decreasing by 20 to " + currentHealth);
+                                setCurrentHealth();
+                            }
+                            if (currentHealth <= 0){
+                                System.out.println("you have no more health, you died"+"\uD83D\uDC80");
+                                System.exit(0);
+                            }
+                            System.out.println("What's next? ");
+                            break;
+
+                        }else {
+                            System.out.println("You can not eat that!");
+                            System.out.println("What's next? ");
+                            break;
                         }
-                    if (currentHealth <= 0){
-                    System.out.println("you have no more health, you died"+"\uD83D\uDC80");
-                    System.exit(0);
-                }
-                    break;
+                    }
+
+                case "drink":
+                    Item drinkDrinkFromRoom = adventure.getSelectedRoom().removeItem(direction);
+                    Item drinkDrinkFromInv = adventure.getPlayer().removeItem(direction);
+
+                    if (drinkDrinkFromRoom == null && drinkDrinkFromInv == null) {
+                        System.out.println("There is nothing you can drink..");
+                        break;
+                    }
+
+                    if (drinkDrinkFromRoom != null) {
+
+                        if (drinkDrinkFromRoom instanceof Drink) {
+                            System.out.println("you have drank " + drinkDrinkFromRoom);
+
+
+                            if (((Drink) drinkDrinkFromRoom).isHealthy()){
+                                currentHealth = currentHealth + 20;
+                                System.out.println("your current health is increased by 20 to "+ currentHealth);
+                                setCurrentHealth();
+                            } else {
+                                currentHealth = currentHealth - 20;
+                                System.out.println("your current health is decreasing by 20 to " + currentHealth);
+                                setCurrentHealth();
+                            }
+                            if (currentHealth <= 0){
+                                System.out.println("you have no more health, you died"+"\uD83D\uDC80");
+                                System.exit(0);
+                            }
+                            System.out.println("What's next? ");
+                            break;
+
+                        }else {
+                            System.out.println("You can not drink that!");
+                            System.out.println("What's next? ");
+                            break;
+                        }
+                    }
+
+                    else if (drinkDrinkFromInv != null) {
+
+                        if (drinkDrinkFromInv instanceof Drink) {
+                            System.out.println("you have drank " + drinkDrinkFromInv);
+
+                            if (((Drink) drinkDrinkFromInv).isHealthy()){
+                                currentHealth = currentHealth + 20;
+                                System.out.println("your current health is increased by 20 to "+ currentHealth);
+                                setCurrentHealth();
+                            } else {
+                                currentHealth = currentHealth - 20;
+                                System.out.println("your current health is decreasing by 20 to " + currentHealth);
+                                setCurrentHealth();
+                            }
+                            if (currentHealth <= 0){
+                                System.out.println("you have no more health, you died"+"\uD83D\uDC80");
+                                System.exit(0);
+                            }
+                            System.out.println("What's next? ");
+                            break;
+
+                        }else {
+                            System.out.println("You can not drink that!");
+                            System.out.println("What's next? ");
+                            break;
+                        }
+                    }
 
                 case "show health", "health":
                     System.out.println("Your current health is: " + currentHealth);
@@ -145,7 +241,11 @@ public class UserInterface {
 
                 case "exit":
                     System.exit(0);
+
+                default:
+                    System.out.println("Invalid input");
             }
+
 
         } while (userInput != "exit");
     }
@@ -153,7 +253,21 @@ public class UserInterface {
     public void start() {
         System.out.println("\u001B[31m"+"\n\uD83D\uDD2A\uD83E\uDE78Welcome to the Mystery of Dohmers Basement\uD83E\uDE78\uD83D\uDD2A");
         System.out.println("--------------------------------------------------\n");
-        user();
+        System.out.println("Access Game Guide during the game by typing: help");
+        System.out.println("Press ENTER to start the game");
+        userInput = scanner.nextLine();
+        boolean userFalse = false;
+
+        while (!userFalse) {
+            if (userInput.isEmpty()) {
+                user();
+                userFalse = true;
+            } else {
+                System.out.println("Invalid input. Press ENTER to start the game.");
+                userInput = scanner.nextLine();
+            }
+        }
+
     }
 }
 
