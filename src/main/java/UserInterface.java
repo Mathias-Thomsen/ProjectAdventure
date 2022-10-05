@@ -24,12 +24,10 @@ public class UserInterface {
             userInput = scanner.nextLine();
             String[] userListFromInput = userInput.split(" ");
             String direction = "";
+            String lastWord = userListFromInput[userListFromInput.length -1];
             String command = userListFromInput[0];
-            if (userListFromInput.length == 2) {
-                direction = userListFromInput[1];
-            }
-            else if (userListFromInput.length > 2){
-                direction = userListFromInput[2];
+            if (userListFromInput.length > 1) {
+                direction = lastWord;
             }
 
 
