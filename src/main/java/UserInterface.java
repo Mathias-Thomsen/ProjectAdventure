@@ -56,7 +56,7 @@ public class UserInterface {
                 case "take":
                     Item itemPickUp = adventure.getSelectedRoom().removeItem(direction);
                     if (itemPickUp == null) {
-                        System.out.println("There is nothing called that..");
+                        System.out.println("There is nothing called " + direction);
                         System.out.println("Try again");
 
                     } else {
@@ -70,7 +70,7 @@ public class UserInterface {
                 case "drop":
                     Item itemDropped = adventure.getPlayer().removeItem(direction);
                     if (itemDropped == null) {
-                        System.out.println("There is nothing called that..");
+                        System.out.println("There is nothing called " + direction);
                         System.out.println("Try again");
                     } else {
                         System.out.println("you have dropped up " + itemDropped);
