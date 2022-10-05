@@ -44,7 +44,6 @@ public class UserInterface {
 
                 case "look", "l":
                     System.out.println(adventure.getSelectedRoom().getRoomInfo());
-
                     if (!adventure.getSelectedRoom().getItems().isEmpty()){
                         for (Item item : adventure.getSelectedRoom().getItems()) {
                             System.out.println("This room contains a " + item.getItemDescription());
