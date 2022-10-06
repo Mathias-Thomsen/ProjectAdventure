@@ -227,6 +227,10 @@ public class UserInterface {
                     if (equipWeapon == null) {
                         System.out.println("There is no weapon you can equip...");
                         break;
+                    } else if (!(equipWeapon instanceof Weapon)) {
+                        System.out.println("You can only equip weapons");
+                        adventure.getPlayer().addItem(equipWeapon);
+                        break;
                     } else {
                         System.out.println("You have equipped " + equipWeapon);
                         adventure.getPlayer().addEquipWeapon(equipWeapon);
