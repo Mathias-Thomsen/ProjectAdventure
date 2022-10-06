@@ -15,23 +15,27 @@ public class Map {
     Room room9 = new Room("boss", "Jeff Dohmer");
 
 
-
+    //Items
     private Item flashLight = new Item("Flashlight", "old flashlight");
     private Item key = new Item("Key", "Key");
-    private Item knife = new Item("Knife", "big sharp knife");
     private Item drill = new Item("Drill", "bloody drill with brain residue");
 
+    //Food
     private Food cheese = new Food("cheese", "smelly cheese", true );
     private Food meat = new Food("Meat", "Cooked meat", true );
+    //Drinks
     private Drink beer = new Drink("Budweiser", "Can of budweiser", false);
+    //Weapon
+    private MeleeWeapon knife = new MeleeWeapon("Knife", "big sharp knife", 15);
+    private RangedWeapon revolver = new RangedWeapon("revolver", "old handgun", 20, 5);
+
 
     public void createRoom(){
 
         //Room1
         room1.setEast(room2);
         room1.setSouth(room4);
-
-
+        room1.addItem(revolver);
 
         //Room2
         room2.setWest(room1);

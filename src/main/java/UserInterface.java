@@ -222,6 +222,28 @@ public class UserInterface {
                     System.out.println("Whats next?");
                     break;
 
+                case "equip":
+                    Item equipWeapon = adventure.getPlayer().removeItem(direction);
+                    if (equipWeapon == null) {
+                        System.out.println("There is no weapon you can equip...");
+                        break;
+                    } else {
+                        System.out.println("You have equipped " + equipWeapon);
+                        adventure.getPlayer().addEquipWeapon(equipWeapon);
+                        break;
+                    }
+
+                case "attack":
+                    if (adventure.getPlayer().getEquipWeapon() == null) {
+                        System.out.println("You have no equipped weapon");
+                        break;
+                    }
+                    if (adventure.getPlayer().getEquipWeapon() != null) {
+                        System.out.println("You are attacking!!!");
+                        System.out.println(adventure.getPlayer().getEquipWeapon());
+                        break;
+                    }
+
                 case "help":
                     System.out.println("""
                     Game guide:

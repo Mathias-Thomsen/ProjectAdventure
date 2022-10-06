@@ -3,7 +3,8 @@ import java.util.ArrayList;
 public class Player {
     private Room selectedRoom;
     private ArrayList<Item> inventory = new ArrayList<>();
-    //private ArrayList<Food> foods = new ArrayList<>();
+    private ArrayList<Item> equipWeapon = new ArrayList<>();
+    private Weapon currentWeapon;
 
     public boolean move(String userInput){
         Room requestedRoom = null;
@@ -38,6 +39,13 @@ public class Player {
         return selectedRoom;
     }
 
+    public Weapon getCurrentWeapon() {
+        return currentWeapon;
+    }
+    public void setCurrentWeapon(){
+        this.currentWeapon = currentWeapon;
+    }
+
 
     //Items
     public void addItem(Item item){
@@ -57,6 +65,15 @@ public class Player {
     public ArrayList<Item> getInventory(){
         return inventory;
     }
+
+    public ArrayList<Item> getEquipWeapon(){
+        return equipWeapon;
+    }
+    public void addEquipWeapon(Item equipWepon){
+        equipWeapon.add(equipWepon);
+    }
+
+
 
 
 
