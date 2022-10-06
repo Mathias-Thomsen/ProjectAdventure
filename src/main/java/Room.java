@@ -10,13 +10,10 @@ public class Room {
     private Room west;
 
 
-
     public Room(String roomName, String roomInfo){
         this.roomName = roomName;
         this.roomInfo = roomInfo;
     }
-
-
 
 
     public String getRoomName(){

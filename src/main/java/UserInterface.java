@@ -239,8 +239,7 @@ public class UserInterface {
                         break;
                     }
                     if (adventure.getPlayer().getEquipWeapon() != null) {
-                        System.out.println("You are attacking!!!");
-                        System.out.println(adventure.getPlayer().getEquipWeapon());
+                        System.out.println("You are attacking your enemy with a " + adventure.getPlayer().getItemNameUser());
                         break;
                     }
 

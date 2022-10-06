@@ -73,7 +73,13 @@ public class Player {
         equipWeapon.add(equipWepon);
     }
 
-
+    public String getItemNameUser(){
+        for (Item weapon : equipWeapon){
+            String itemAttackName = weapon.getItemName();
+            return itemAttackName;
+        }
+        return null;
+    }
 
 
 
