@@ -27,7 +27,7 @@ public class Map {
     private Drink beer = new Drink("Budweiser", "Can of budweiser", false);
     //Weapon
     private MeleeWeapon knife = new MeleeWeapon("Knife", "big sharp knife", 15);
-    private RangedWeapon revolver = new RangedWeapon("revolver", "old handgun", 20, 5);
+    private RangedWeapon revolver = new RangedWeapon("revolver", "old revolver", 20, 5);
 
 
     public void createRoom(){

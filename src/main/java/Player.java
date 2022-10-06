@@ -4,7 +4,6 @@ public class Player {
     private Room selectedRoom;
     private ArrayList<Item> inventory = new ArrayList<>();
     private ArrayList<Item> equipWeapon = new ArrayList<>();
-    private ArrayList<Weapon> equipWeapons = new ArrayList<>();
     private Weapon currentWeapon;
 
     public boolean move(String userInput){
