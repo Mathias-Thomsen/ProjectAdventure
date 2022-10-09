@@ -1,20 +1,11 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserInterface {
     Adventure adventure = new Adventure();
     Scanner scanner = new Scanner(System.in);
-    int currentHealth = 50;
     private String userInput;
 
-    public void setCurrentHealth(){
-        if (currentHealth >= 50){
-            System.out.println("Your current health is now: " +  currentHealth + ", You are in good health stay above 50!");
-        } else if(currentHealth < 50) {
-            System.out.println("Your current health is now: " +  currentHealth + ", Your health is low, keep eating!");
-        }
 
-    }
 
     public void user() {
 
@@ -55,6 +46,7 @@ public class UserInterface {
 
                 case "take":
                     Item itemPickUp = adventure.getSelectedRoom().removeItem(direction);
+
                     if (itemPickUp == null) {
                         System.out.println("There is nothing called " + direction);
                         System.out.println("Try again");
@@ -101,15 +93,18 @@ public class UserInterface {
 
 
                             if (((Food) eatFoodFromRoom).isHealthy()){
-                                currentHealth = currentHealth + 20;
-                                System.out.println("your current health is increased by 20 to "+ currentHealth);
-                                setCurrentHealth();
+
+                                double health = (((Food) eatFoodFromRoom).getHealthPoints());
+                                adventure.getPlayer().setHealth(health);
+                                System.out.println("your current health is increased to "+ adventure.getPlayer().getHealth());
+
                             } else {
-                                currentHealth = currentHealth - 20;
-                                System.out.println("your current health is decreasing by 20 to " + currentHealth);
-                                setCurrentHealth();
+                                double health = (((Food) eatFoodFromRoom).getHealthPoints());
+                                adventure.getPlayer().setHealth(health);
+                                System.out.println("your current health is decreasing to " + adventure.getPlayer().getHealth());
+
                             }
-                            if (currentHealth <= 0){
+                            if (adventure.getPlayer().getHealth() <= 0){
                                 System.out.println("you have no more health, you died"+"\uD83D\uDC80");
                                 System.exit(0);
                             }
@@ -128,16 +123,20 @@ public class UserInterface {
                         if (eatFoodFromInv instanceof Food) {
                             System.out.println("you have eaten " + eatFoodFromInv);
 
+
                             if (((Food) eatFoodFromInv).isHealthy()){
-                                currentHealth = currentHealth + 20;
-                                System.out.println("your current health is increased by 20 to "+ currentHealth);
-                                setCurrentHealth();
+
+                                double health = (((Food) eatFoodFromInv).getHealthPoints());
+                                adventure.getPlayer().setHealth(health);
+                                System.out.println("your current health is increased to "+ adventure.getPlayer().getHealth());
+
                             } else {
-                                currentHealth = currentHealth - 20;
-                                System.out.println("your current health is decreasing by 20 to " + currentHealth);
-                                setCurrentHealth();
+                                double health = (((Food) eatFoodFromInv).getHealthPoints());
+                                adventure.getPlayer().setHealth(health);
+                                System.out.println("your current health is decreasing to " + adventure.getPlayer().getHealth());
+
                             }
-                            if (currentHealth <= 0){
+                            if (adventure.getPlayer().getHealth() <= 0){
                                 System.out.println("you have no more health, you died"+"\uD83D\uDC80");
                                 System.exit(0);
                             }
@@ -151,31 +150,35 @@ public class UserInterface {
                         }
                     }
 
-                case "drink":
-                    Item drinkDrinkFromRoom = adventure.getSelectedRoom().removeItem(direction);
-                    Item drinkDrinkFromInv = adventure.getPlayer().removeItem(direction);
 
-                    if (drinkDrinkFromRoom == null && drinkDrinkFromInv == null) {
-                        System.out.println("There is nothing you can drink..");
+                case "drink":
+                    Item drinkFromRoom = adventure.getSelectedRoom().removeItem(direction);
+                    Item drinkFromInventory = adventure.getPlayer().removeItem(direction);
+
+                    if (drinkFromRoom == null && drinkFromInventory == null) {
+                        System.out.println("There is nothing you can eat..");
                         break;
                     }
 
-                    if (drinkDrinkFromRoom != null) {
+                    if (drinkFromRoom != null) {
 
-                        if (drinkDrinkFromRoom instanceof Drink) {
-                            System.out.println("you have drank " + drinkDrinkFromRoom);
+                        if (drinkFromRoom instanceof Drink) {
+                            System.out.println("you have eaten " + drinkFromRoom);
 
 
-                            if (((Drink) drinkDrinkFromRoom).isHealthy()){
-                                currentHealth = currentHealth + 20;
-                                System.out.println("your current health is increased by 20 to "+ currentHealth);
-                                setCurrentHealth();
+                            if (((Drink) drinkFromRoom).isHealthy()){
+
+                                double health = (((Drink) drinkFromRoom).getHealthPoints());
+                                adventure.getPlayer().setHealth(health);
+                                System.out.println("your current health is increased to "+ adventure.getPlayer().getHealth());
+
                             } else {
-                                currentHealth = currentHealth - 20;
-                                System.out.println("your current health is decreasing by 20 to " + currentHealth);
-                                setCurrentHealth();
+                                double health = (((Drink) drinkFromRoom).getHealthPoints());
+                                adventure.getPlayer().setHealth(health);
+                                System.out.println("your current health is decreasing to " + adventure.getPlayer().getHealth());
+
                             }
-                            if (currentHealth <= 0){
+                            if (adventure.getPlayer().getHealth() <= 0){
                                 System.out.println("you have no more health, you died"+"\uD83D\uDC80");
                                 System.exit(0);
                             }
@@ -183,27 +186,31 @@ public class UserInterface {
                             break;
 
                         }else {
-                            System.out.println("You can not drink that!");
+                            System.out.println("You can not eat that!");
                             System.out.println("What's next? ");
                             break;
                         }
                     }
 
-                    else if (drinkDrinkFromInv != null) {
+                    else if (drinkFromInventory != null) {
 
-                        if (drinkDrinkFromInv instanceof Drink) {
-                            System.out.println("you have drank " + drinkDrinkFromInv);
+                        if (drinkFromInventory instanceof Drink) {
+                            System.out.println("you have eaten " + drinkFromInventory);
 
-                            if (((Drink) drinkDrinkFromInv).isHealthy()){
-                                currentHealth = currentHealth + 20;
-                                System.out.println("your current health is increased by 20 to "+ currentHealth);
-                                setCurrentHealth();
+
+                            if (((Drink) drinkFromInventory).isHealthy()){
+
+                                double health = (((Drink) drinkFromInventory).getHealthPoints());
+                                adventure.getPlayer().setHealth(health);
+                                System.out.println("your current health is increased to "+ adventure.getPlayer().getHealth());
+
                             } else {
-                                currentHealth = currentHealth - 20;
-                                System.out.println("your current health is decreasing by 20 to " + currentHealth);
-                                setCurrentHealth();
+                                double health = (((Drink) drinkFromInventory).getHealthPoints());
+                                adventure.getPlayer().setHealth(health);
+                                System.out.println("your current health is decreasing to " + adventure.getPlayer().getHealth());
+
                             }
-                            if (currentHealth <= 0){
+                            if (adventure.getPlayer().getHealth() <= 0){
                                 System.out.println("you have no more health, you died"+"\uD83D\uDC80");
                                 System.exit(0);
                             }
@@ -211,14 +218,14 @@ public class UserInterface {
                             break;
 
                         }else {
-                            System.out.println("You can not drink that!");
+                            System.out.println("You can not eat that!");
                             System.out.println("What's next? ");
                             break;
                         }
                     }
 
                 case "show health", "health":
-                    System.out.println("Your current health is: " + currentHealth);
+                    System.out.println("Your current health is: " + adventure.getPlayer().getHealth());
                     System.out.println("Whats next?");
                     break;
 
@@ -242,6 +249,8 @@ public class UserInterface {
                         System.out.println("You have no equipped weapon");
                         break;
                     }
+                    //TODO lav en metode der kontrollere om der er mere ammo tilbage og i såfald attack.
+
                     if (adventure.getPlayer().getEquipWeapon() != null) {
                         System.out.println("You are attacking your enemy with a " + adventure.getPlayer().getItemNameUser());
                         break;

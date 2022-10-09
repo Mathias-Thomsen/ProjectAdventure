@@ -10,4 +10,7 @@ public class RangedWeapon extends Weapon {
     public int remainingAmmo(){
         return ammo;
     }
+
+
+
 }

@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Adventure {
-    private Player player = new Player();
+    private Player player = new Player(50);
     private Map map = new Map();
 
 

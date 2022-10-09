@@ -5,6 +5,18 @@ public class Player {
     private ArrayList<Item> inventory = new ArrayList<>();
     private ArrayList<Item> equipWeapon = new ArrayList<>();
     private Weapon currentWeapon;
+    private double health;
+    private final double maxHealth = 50;
+
+    public Player(double health) {
+        this.health = health;
+    }
+    public double getHealth() {
+        return health;
+    }
+    public void setHealth(double health) {
+        this.health += health;
+    }
 
     public boolean move(String userInput){
         Room requestedRoom = null;
@@ -35,22 +47,13 @@ public class Player {
         this.selectedRoom = room;
     }
 
-    public Room getRoomInfo(){
-        return selectedRoom;
-    }
-
-    public Weapon getCurrentWeapon() {
-        return currentWeapon;
-    }
-    public void setCurrentWeapon(){
-        this.currentWeapon = currentWeapon;
-    }
 
 
     //Items
     public void addItem(Item item){
         inventory.add(item);
     }
+
 
     public Item removeItem(String itemName) {
         for (Item item : inventory) {

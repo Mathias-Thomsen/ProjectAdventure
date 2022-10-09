@@ -21,10 +21,10 @@ public class Map {
     private Item drill = new Item("Drill", "bloody drill with brain residue");
 
     //Food
-    private Food cheese = new Food("cheese", "smelly cheese", true );
-    private Food meat = new Food("Meat", "Cooked meat", true );
+    private Food cheese = new Food("cheese", "smelly cheese", 20, true );
+    private Food meat = new Food("Meat", "Cooked meat", 20, true );
     //Drinks
-    private Drink beer = new Drink("Budweiser", "Can of budweiser", false);
+    private Drink beer = new Drink("Budweiser", "Can of budweiser", -20, false);
     //Weapon
     private MeleeWeapon knife = new MeleeWeapon("Knife", "big sharp knife", 15);
     private RangedWeapon revolver = new RangedWeapon("revolver", "old revolver", 20, 5);
