@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -73,6 +74,9 @@ public class UserInterface {
 
                 case "inventory", "inv":
                     System.out.println("Your inventory contains: " + adventure.getPlayer().getInventory());
+                    if (adventure.getPlayer().getItemNameUser() != null){
+                        System.out.println("You have " + adventure.getPlayer().getItemNameUser() + " equipped");
+                    }
                     System.out.println("What's next?");
                     break;
 
@@ -245,14 +249,18 @@ public class UserInterface {
                     }
 
                 case "attack":
-                    if (adventure.getPlayer().getEquipWeapon() == null) {
+                    Item enemyAttack = adventure.getSelectedRoom().removeItem(direction);
+                    if (adventure.getPlayer().getItemNameUser() == null) {
                         System.out.println("You have no equipped weapon");
+                        if (enemyAttack instanceof Enemy){
+                            adventure.getSelectedRoom().addItem(enemyAttack);
+                        }
                         break;
-                    }
-                    //TODO lav en metode der kontrollere om der er mere ammo tilbage og i såfald attack.
-
-                    if (adventure.getPlayer().getEquipWeapon() != null) {
-                        System.out.println("You are attacking your enemy with a " + adventure.getPlayer().getItemNameUser());
+                    } else if (!(enemyAttack instanceof Enemy)) {
+                        System.out.println("thats not a enemy");
+                        break;
+                    } else {
+                        System.out.println("You are attacking "+ enemyAttack +" with a " + adventure.getPlayer().getItemNameUser());
                         break;
                     }
 

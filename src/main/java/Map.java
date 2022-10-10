@@ -26,8 +26,11 @@ public class Map {
     //Drinks
     private Drink beer = new Drink("Budweiser", "Can of budweiser", -20, false);
     //Weapon
-    private MeleeWeapon knife = new MeleeWeapon("Knife", "big sharp knife", 15);
+    private MeleeWeapon knife = new MeleeWeapon("Knife", "big sharp knife", 15, 0);
     private RangedWeapon revolver = new RangedWeapon("revolver", "old revolver", 20, 5);
+
+    //Enemys
+    private Enemy dahmer = new Enemy("Dahmer", "weird man in the room");
 
 
     public void createRoom(){
@@ -36,6 +39,7 @@ public class Map {
         room1.setEast(room2);
         room1.setSouth(room4);
         room1.addItem(revolver);
+        room1.addItem(dahmer);
 
         //Room2
         room2.setWest(room1);

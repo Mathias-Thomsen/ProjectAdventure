@@ -4,6 +4,7 @@ public class Player {
     private Room selectedRoom;
     private ArrayList<Item> inventory = new ArrayList<>();
     private ArrayList<Item> equipWeapon = new ArrayList<>();
+    private ArrayList<Weapon> equipWeapons = new ArrayList<>();
     private Weapon currentWeapon;
     private double health;
     private final double maxHealth = 50;
@@ -76,6 +77,7 @@ public class Player {
         equipWeapon.add(equipWepon);
     }
 
+
     public String getItemNameUser(){
         for (Item weapon : equipWeapon){
             String itemAttackName = weapon.getItemName();
@@ -84,12 +86,13 @@ public class Player {
         return null;
     }
 
-
-
-
-
-
-
+    public int getMeeleorRanged(){
+        for (Weapon weapon : equipWeapons){
+            int ranged = weapon.remainingAmmo();
+            return ranged;
+        }
+        return 0;
+    }
 
 
 }
