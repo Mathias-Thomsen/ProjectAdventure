@@ -86,14 +86,25 @@ public class Player {
         return null;
     }
 
-    public int getMeeleorRanged(){
+
+    public Weapon getMeeleorRanged(String itemName){
         for (Weapon weapon : equipWeapons){
-            int ranged = weapon.remainingAmmo();
-            return ranged;
+            if (weapon.getItemName().equals(itemName)){
+                return weapon;
+            }
         }
-        return 0;
+        return null;
     }
 
+   /* public Item removeItem(String itemName) {
+        for (Item item : inventory) {
+            if (item.getItemName().equals(itemName)) {
+                inventory.remove(item);
+                return item;
+            }
+        }
+        return null;
+    }*/
 
 }
 

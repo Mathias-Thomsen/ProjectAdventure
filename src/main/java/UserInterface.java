@@ -166,7 +166,7 @@ public class UserInterface {
 
                     if (drinkFromRoom != null) {
 
-                        if (drinkFromRoom instanceof Drink) {
+                        if (drinkFromRoom instanceof Drink || drinkFromInventory instanceof Drink) {
                             System.out.println("you have eaten " + drinkFromRoom);
 
 
@@ -259,8 +259,13 @@ public class UserInterface {
                     } else if (!(enemyAttack instanceof Enemy)) {
                         System.out.println("thats not a enemy");
                         break;
-                    } else {
+                    }  else {
                         System.out.println("You are attacking "+ enemyAttack +" with a " + adventure.getPlayer().getItemNameUser());
+                        System.out.println("You hit your for 20");
+                        System.out.println(enemyAttack + " is hitting you for 20");
+                        double health = (adventure.getPlayer().getHealth());
+                        adventure.getPlayer().setHealth(health);
+                        System.out.println("your current health is decreasing to " + (adventure.getPlayer().getHealth() -20));
                         break;
                     }
 
