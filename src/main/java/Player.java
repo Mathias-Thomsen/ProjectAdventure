@@ -106,6 +106,7 @@ public class Player {
     public ReturnMessage attackCommand(String userChoice){
 
         if (getSelectedRoom().getEnemy().isEmpty()){
+
             return ReturnMessage.NOT_FOUND;
         }
         else if (currentWeapon == null) {
@@ -159,13 +160,7 @@ public class Player {
         health = getHealth() - 20;
     }
 
-    public boolean isDead(){
-        if (health<=0){
-            return true;
-        }else{
-            return false;
-        }
-    }
+
 
 
 

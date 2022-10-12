@@ -28,7 +28,7 @@ public class Map {
     private Drink beer = new Drink("Budweiser", "Can of budweiser. Maybe there is something bad about this", -20);
 
     //Weapon
-    private MeleeWeapon knife = new MeleeWeapon("Knife", "big sharp knife", 15, 0);
+    private Weapon knife = new Weapon("Knife", "big sharp knife", 15, 0);
 
     //Enemys
     private Enemy dahmer = new Enemy("Dahmer", "wird man in the room ", 50);
