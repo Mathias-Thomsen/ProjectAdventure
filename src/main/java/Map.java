@@ -12,7 +12,7 @@ public class Map {
     Room room6 = new Room("a tunnel", "a narrow tunnel leading two ways");
     Room room7 = new Room("a bedroom", "a small bedroom containing a small bed");
     Room room8 = new Room("stairs", "stairs leading outside towards south");
-    Room room9 = new Room("boss", "Jeff Dohmer");
+    Room room9 = new Room("boss", "Jeff Dahmer");
 
 
     //Items
@@ -21,16 +21,17 @@ public class Map {
     private Item drill = new Item("Drill", "bloody drill with brain residue");
 
     //Food
-    private Food cheese = new Food("cheese", "smelly cheese", 20, true );
-    private Food meat = new Food("Meat", "Cooked meat", 20, true );
+    private Food cheese = new Food("cheese", "smelly cheese", 20);
+    private Food meat = new Food("Meat", "Cooked meat", 20);
+
     //Drinks
-    private Drink beer = new Drink("Budweiser", "Can of budweiser", -20, false);
+    private Drink beer = new Drink("Budweiser", "Can of budweiser. Maybe there is something bad about this", -20);
+
     //Weapon
     private MeleeWeapon knife = new MeleeWeapon("Knife", "big sharp knife", 15, 0);
-    private RangedWeapon revolver = new RangedWeapon("revolver", "old revolver", 20, 5);
 
     //Enemys
-    private Enemy dahmer = new Enemy("Dahmer", "weird man in the room");
+    private Enemy dahmer = new Enemy("Dahmer", "wird man in the room ", 50);
 
 
     public void createRoom(){
@@ -38,8 +39,7 @@ public class Map {
         //Room1
         room1.setEast(room2);
         room1.setSouth(room4);
-        room1.addItem(revolver);
-        room1.addItem(dahmer);
+        room1.addEnemy(dahmer);
 
         //Room2
         room2.setWest(room1);
@@ -77,6 +77,7 @@ public class Map {
         //Room9
         room9.setNorth(room6);
         room9.setWest(room8);
+        room9.addEnemy(dahmer);
 
     }
 

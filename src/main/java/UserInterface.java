@@ -15,11 +15,11 @@ public class UserInterface {
         do {
             userInput = scanner.nextLine();
             String[] userListFromInput = userInput.split(" ");
-            String direction = "";
+            String userChoice = "";
             String lastWord = userListFromInput[userListFromInput.length -1];
             String command = userListFromInput[0];
             if (userListFromInput.length > 1) {
-                direction = lastWord;
+                userChoice = lastWord;
             }
 
 
@@ -40,16 +40,19 @@ public class UserInterface {
                         for (Item item : adventure.getSelectedRoom().getItems()) {
                             System.out.println("This room contains a " + item.getItemDescription());
                         }
+                        for (Enemy enemy : adventure.getSelectedRoom().getEnemy()){
+                            System.out.println("This room contains a " + enemy.getEnemyDescription());
+                        }
                     }
                     System.out.println("Whats next?");
                     break;
 
 
                 case "take":
-                    Item itemPickUp = adventure.getSelectedRoom().removeItem(direction);
+                    Item itemPickUp = adventure.getSelectedRoom().removeItem(userChoice);
 
                     if (itemPickUp == null) {
-                        System.out.println("There is nothing called " + direction);
+                        System.out.println("There is nothing called " + userChoice);
                         System.out.println("Try again");
 
                     } else {
@@ -61,9 +64,9 @@ public class UserInterface {
 
 
                 case "drop":
-                    Item itemDropped = adventure.getPlayer().removeItem(direction);
+                    Item itemDropped = adventure.getPlayer().removeItem(userChoice);
                     if (itemDropped == null) {
-                        System.out.println("There is nothing called " + direction);
+                        System.out.println("There is nothing called " + userChoice);
                         System.out.println("Try again");
                     } else {
                         System.out.println("you have dropped up " + itemDropped);
@@ -82,192 +85,88 @@ public class UserInterface {
 
 
                 case "eat":
-                    Item eatFoodFromRoom = adventure.getSelectedRoom().removeItem(direction);
-                    Item eatFoodFromInv = adventure.getPlayer().removeItem(direction);
+                    ReturnMessage resultFood = adventure.playerEat(userChoice);
+                        if (resultFood == ReturnMessage.OK) {
+                            System.out.println("you have eaten " + userChoice);
+                            if (adventure.getPlayer().getHealth() <= 0) {
+                                System.out.println("You died! Thanks for the game!");
+                                System.exit(1);
+                            }
+                            System.out.println("your current health is now " + adventure.getPlayer().getHealth());
 
-                    if (eatFoodFromRoom == null && eatFoodFromInv == null) {
-                        System.out.println("There is nothing you can eat..");
+                        }
+                        else if (resultFood == ReturnMessage.CANT) {
+                            System.out.println("You can not eat " + userChoice);
+
+                        }
+                        else if (resultFood == ReturnMessage.NOT_FOUND) {
+                            System.out.println("Invalid item " + userChoice);
+                            System.out.println("Maybe you need to take your food first before you can eat...");
+                        }
                         break;
-                    }
 
-                    if (eatFoodFromRoom != null) {
-
-                        if (eatFoodFromRoom instanceof Food) {
-                            System.out.println("you have eaten " + eatFoodFromRoom);
-
-
-                            if (((Food) eatFoodFromRoom).isHealthy()){
-
-                                double health = (((Food) eatFoodFromRoom).getHealthPoints());
-                                adventure.getPlayer().setHealth(health);
-                                System.out.println("your current health is increased to "+ adventure.getPlayer().getHealth());
-
-                            } else {
-                                double health = (((Food) eatFoodFromRoom).getHealthPoints());
-                                adventure.getPlayer().setHealth(health);
-                                System.out.println("your current health is decreasing to " + adventure.getPlayer().getHealth());
-
-                            }
-                            if (adventure.getPlayer().getHealth() <= 0){
-                                System.out.println("you have no more health, you died"+"\uD83D\uDC80");
-                                System.exit(0);
-                            }
-                            System.out.println("What's next? ");
-                            break;
-
-                        }else {
-                            System.out.println("You can not eat that!");
-                            System.out.println("What's next? ");
-                            break;
-                        }
-                    }
-
-                    else if (eatFoodFromInv != null) {
-
-                        if (eatFoodFromInv instanceof Food) {
-                            System.out.println("you have eaten " + eatFoodFromInv);
-
-
-                            if (((Food) eatFoodFromInv).isHealthy()){
-
-                                double health = (((Food) eatFoodFromInv).getHealthPoints());
-                                adventure.getPlayer().setHealth(health);
-                                System.out.println("your current health is increased to "+ adventure.getPlayer().getHealth());
-
-                            } else {
-                                double health = (((Food) eatFoodFromInv).getHealthPoints());
-                                adventure.getPlayer().setHealth(health);
-                                System.out.println("your current health is decreasing to " + adventure.getPlayer().getHealth());
-
-                            }
-                            if (adventure.getPlayer().getHealth() <= 0){
-                                System.out.println("you have no more health, you died"+"\uD83D\uDC80");
-                                System.exit(0);
-                            }
-                            System.out.println("What's next? ");
-                            break;
-
-                        }else {
-                            System.out.println("You can not eat that!");
-                            System.out.println("What's next? ");
-                            break;
-                        }
-                    }
 
 
                 case "drink":
-                    Item drinkFromRoom = adventure.getSelectedRoom().removeItem(direction);
-                    Item drinkFromInventory = adventure.getPlayer().removeItem(direction);
+                    ReturnMessage resultDrink = adventure.playerDrink(userChoice);
+                    if (resultDrink == ReturnMessage.OK) {
+                        System.out.println("you have drank " + userChoice);
+                        System.out.println("your current health is now " + adventure.getPlayer().getHealth());
 
-                    if (drinkFromRoom == null && drinkFromInventory == null) {
-                        System.out.println("There is nothing you can eat..");
-                        break;
                     }
+                    else if (resultDrink == ReturnMessage.CANT) {
+                        System.out.println("You can not drink " + userChoice);
 
-                    if (drinkFromRoom != null) {
-
-                        if (drinkFromRoom instanceof Drink || drinkFromInventory instanceof Drink) {
-                            System.out.println("you have eaten " + drinkFromRoom);
-
-
-                            if (((Drink) drinkFromRoom).isHealthy()){
-
-                                double health = (((Drink) drinkFromRoom).getHealthPoints());
-                                adventure.getPlayer().setHealth(health);
-                                System.out.println("your current health is increased to "+ adventure.getPlayer().getHealth());
-
-                            } else {
-                                double health = (((Drink) drinkFromRoom).getHealthPoints());
-                                adventure.getPlayer().setHealth(health);
-                                System.out.println("your current health is decreasing to " + adventure.getPlayer().getHealth());
-
-                            }
-                            if (adventure.getPlayer().getHealth() <= 0){
-                                System.out.println("you have no more health, you died"+"\uD83D\uDC80");
-                                System.exit(0);
-                            }
-                            System.out.println("What's next? ");
-                            break;
-
-                        }else {
-                            System.out.println("You can not eat that!");
-                            System.out.println("What's next? ");
-                            break;
-                        }
                     }
-
-                    else if (drinkFromInventory != null) {
-
-                        if (drinkFromInventory instanceof Drink) {
-                            System.out.println("you have eaten " + drinkFromInventory);
-
-
-                            if (((Drink) drinkFromInventory).isHealthy()){
-
-                                double health = (((Drink) drinkFromInventory).getHealthPoints());
-                                adventure.getPlayer().setHealth(health);
-                                System.out.println("your current health is increased to "+ adventure.getPlayer().getHealth());
-
-                            } else {
-                                double health = (((Drink) drinkFromInventory).getHealthPoints());
-                                adventure.getPlayer().setHealth(health);
-                                System.out.println("your current health is decreasing to " + adventure.getPlayer().getHealth());
-
-                            }
-                            if (adventure.getPlayer().getHealth() <= 0){
-                                System.out.println("you have no more health, you died"+"\uD83D\uDC80");
-                                System.exit(0);
-                            }
-                            System.out.println("What's next? ");
-                            break;
-
-                        }else {
-                            System.out.println("You can not eat that!");
-                            System.out.println("What's next? ");
-                            break;
-                        }
+                    else if (resultDrink == ReturnMessage.NOT_FOUND) {
+                        System.out.println("Invalid item " + userChoice);
+                        System.out.println("Maybe you need to take your drink first before you can eat...");
                     }
+                    break;
+
 
                 case "show health", "health":
                     System.out.println("Your current health is: " + adventure.getPlayer().getHealth());
                     System.out.println("Whats next?");
                     break;
 
-                case "equip":
-                    Item equipWeapon = adventure.getPlayer().removeItem(direction);
-                    if (equipWeapon == null) {
-                        System.out.println("There is no weapon you can equip...");
-                        break;
-                    } else if (!(equipWeapon instanceof Weapon)) {
-                        System.out.println("You can only equip weapons");
-                        adventure.getPlayer().addItem(equipWeapon);
-                        break;
-                    } else {
-                        System.out.println("You have equipped " + equipWeapon);
-                        adventure.getPlayer().addEquipWeapon(equipWeapon);
-                        break;
-                    }
+                case "equip": {
+                    ReturnMessage result = adventure.equip(userChoice);
+                    if (result == ReturnMessage.OK) { System.out.println("you equipped " + userChoice); }
+                    else if (result == ReturnMessage.CANT) {System.out.println(userChoice +  " cannot be equipped.");}
+                    else if (result == ReturnMessage.NOT_FOUND){System.out.println(userChoice + " is an invalid item or is not in inventory");}
+                    break;
+                }
 
                 case "attack":
-                    Item enemyAttack = adventure.getSelectedRoom().removeItem(direction);
-                    if (adventure.getPlayer().getItemNameUser() == null) {
-                        System.out.println("You have no equipped weapon");
-                        if (enemyAttack instanceof Enemy){
-                            adventure.getSelectedRoom().addItem(enemyAttack);
-                        }
-                        break;
-                    } else if (!(enemyAttack instanceof Enemy)) {
-                        System.out.println("thats not a enemy");
-                        break;
-                    }  else {
-                        System.out.println("You are attacking "+ enemyAttack +" with a " + adventure.getPlayer().getItemNameUser());
-                        System.out.println("You hit your for 20");
-                        System.out.println(enemyAttack + " is hitting you for 20");
-                        double health = (adventure.getPlayer().getHealth());
-                        adventure.getPlayer().setHealth(health);
-                        System.out.println("your current health is decreasing to " + (adventure.getPlayer().getHealth() -20));
-                        break;
+                    ReturnMessage enemyAttack = adventure.attack(userChoice);
+
+                    if (enemyAttack == ReturnMessage.NOT_FOUND){
+                        System.out.println("No enemy found in this room");
                     }
+                    else if (enemyAttack == ReturnMessage.CANT) {
+                        System.out.println("You have no equipped weapon");
+                    }
+                    else if (enemyAttack == ReturnMessage.OK) {
+                        System.out.println("You have attacked " + userChoice);
+                        adventure.getEnemy().enemyDamage();
+                        if (adventure.getEnemyHealth() <= 0){
+                            System.out.println("you kill " + userChoice + " you are free to go!");
+                            System.out.println("Thanks for the game! ");
+                            System.exit(2);
+                        }
+                        else if (adventure.getPlayer().getHealth() <= 0) {
+                            System.out.println("You died! thanks for the game!");
+                            System.exit(1);
+                        } else {
+                            System.out.println(userChoice + " health is now " + adventure.getEnemyHealth());
+                            System.out.println("BUT " + userChoice + " attacked also you with a bloody hammer! ");
+                            adventure.getPlayer().playerDamage();
+                            System.out.println("Your health is now " + adventure.getPlayer().getHealth());
+                        }
+                    }
+                    break;
+
 
                 case "help":
                     System.out.println("""
@@ -278,9 +177,13 @@ public class UserInterface {
                     to see location: "look"
                     to pickup: "take" and "item name"
                     to drop: "drop" and "item name"
-                    to see inventory: "inventory"
+                    to see the player inventory: "inventory"
                     to consume a food "eat" and "item name"
                     to see health: "health"
+                    to eat food: "eat"
+                    to drink: "drink"
+                    to equip a weapon: "equip"
+                    to attack a enemy: "attack"
                     
                     whats next?
                      """);
@@ -317,7 +220,3 @@ public class UserInterface {
 
     }
 }
-
-
-
-

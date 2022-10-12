@@ -8,11 +8,6 @@ public abstract class Weapon extends Item {
         this.ammo = ammo;
     }
 
-    public int getDamage(){
-        return damage;
-    }
 
-    public int remainingAmmo(){
-        return ammo;
-    }
+
 }

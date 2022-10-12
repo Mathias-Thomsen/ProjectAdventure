@@ -1,13 +1,15 @@
 import java.util.ArrayList;
 
 public class Room {
-    private ArrayList<Item> items = new ArrayList<>();
     private String roomName;
     private String roomInfo;
     private Room north;
     private Room east;
     private Room south;
     private Room west;
+
+    private ArrayList<Item> items = new ArrayList<>();
+    private ArrayList<Enemy> enemies = new ArrayList<>();
 
 
     public Room(String roomName, String roomInfo){
@@ -75,9 +77,24 @@ public class Room {
         return null;
     }
 
+
+
     public ArrayList<Item> getItems(){
         return items;
     }
+
+
+    public void addEnemy(Enemy enemy ){
+        enemies.add(enemy);
+    }
+
+    public ArrayList<Enemy> getEnemy(){
+        return enemies;
+    }
+
+
+
+
 
 
 }

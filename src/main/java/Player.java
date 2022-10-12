@@ -6,8 +6,8 @@ public class Player {
     private ArrayList<Item> equipWeapon = new ArrayList<>();
     private ArrayList<Weapon> equipWeapons = new ArrayList<>();
     private Weapon currentWeapon;
-    private double health;
-    private final double maxHealth = 50;
+    private double health = 50;
+
 
     public Player(double health) {
         this.health = health;
@@ -87,24 +87,101 @@ public class Player {
     }
 
 
-    public Weapon getMeeleorRanged(String itemName){
-        for (Weapon weapon : equipWeapons){
-            if (weapon.getItemName().equals(itemName)){
-                return weapon;
+    public ReturnMessage equipWeapon(String itemName) {
+        Item item = removeItem(itemName);
+        if (item instanceof Weapon) {
+            currentWeapon = (Weapon) item;
+            return ReturnMessage.OK;
+        } else {
+            if (item!=null){
+                return ReturnMessage.CANT;
             }
+            return ReturnMessage.NOT_FOUND;
         }
-        return null;
+    }
+    public Weapon getCurrentWeapon(){
+        return currentWeapon;
     }
 
-   /* public Item removeItem(String itemName) {
+    public ReturnMessage attackCommand(String userChoice){
+
+        if (getSelectedRoom().getEnemy().isEmpty()){
+            return ReturnMessage.NOT_FOUND;
+        }
+        else if (currentWeapon == null) {
+            return ReturnMessage.CANT;
+        }else {
+            return ReturnMessage.OK;
+        }
+
+    }
+
+    public ReturnMessage eatFood(String itemName) {
+        Item item = findItem(itemName);
+            if (item instanceof Food) {
+                health += ((Food) item).getHealthPoints();
+                removeItem(itemName);
+                return ReturnMessage.OK;
+            } else {
+                if (item!=null){
+                    return ReturnMessage.CANT;
+              }
+              return ReturnMessage.NOT_FOUND;
+        }
+    }
+
+    public ReturnMessage drinkItem(String itemName) {
+        Item item = findItem(itemName);
+        if (item instanceof Drink) {
+            health += ((Drink) item).getHealthPoints();
+            removeItem(itemName);
+            return ReturnMessage.OK;
+        } else {
+            if (item!=null){
+                return ReturnMessage.CANT;
+            }
+            return ReturnMessage.NOT_FOUND;
+        }
+    }
+
+
+    public Item findItem(String name) {
         for (Item item : inventory) {
-            if (item.getItemName().equals(itemName)) {
-                inventory.remove(item);
+            if (item.getItemName().equals(name)) {
                 return item;
             }
+        } return null;
+    }
+
+
+
+    public void playerDamage(){
+        health = getHealth() - 20;
+    }
+
+    public boolean isDead(){
+        if (health<=0){
+            return true;
+        }else{
+            return false;
         }
-        return null;
-    }*/
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 

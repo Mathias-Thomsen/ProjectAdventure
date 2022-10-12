@@ -1,13 +1,37 @@
-public class Enemy extends Item {
+public class Enemy {
+    private String enemyName;
+    private String enemyDescription;
+    private int enemyHealth;
 
-
-
-    public Enemy(String itemName, String itemDescription) {
-        super(itemName, itemDescription);
+    public Enemy(int enemyHealth){
+        this.enemyHealth = enemyHealth;
     }
-//TODO current health
-    @Override
+    public Enemy(String enemyName, String enemyDescription, int enemyHealth){
+        this.enemyHealth = enemyHealth;
+        this.enemyName = enemyName;
+        this.enemyDescription = enemyDescription;
+    }
+
+
+    public double enemyDamage(){
+        return enemyHealth = getEnemyHealth() - 20;
+    }
+
+
+    //Getter
+    public int getEnemyHealth() {
+        return enemyHealth;
+    }
+    public String getEnemyDescription(){
+        return enemyDescription;
+    }
+
+
+    //toString
     public String toString() {
-        return super.toString();
+        return  enemyName;
     }
+
+
 }
+
