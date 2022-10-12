@@ -17,11 +17,11 @@ public class Map {
 
     //Items
     private Item mug = new Item("mug", "old coffee mug");
-    private Item bottle = new Item("empty bottle", "empty beer bottle");
+    private Item bottle = new Item("bottle", "empty beer bottle");
     private Item drill = new Item("Drill", "bloody drill with human residue");
 
     //Food
-    private Food Chocolate = new Food("Chocolate bar", "chocolate bar", 20);
+    private Food Chocolate = new Food("Chocolate", "chocolate bar", 20);
     private Food meat = new Food("Meat", "smelly meat", -20);
 
     //Drinks
