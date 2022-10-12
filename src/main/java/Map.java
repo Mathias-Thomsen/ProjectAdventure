@@ -5,24 +5,24 @@ public class Map {
     }
 
     Room room1 = new Room("a empty room \n", "The room contains nothing and there is little to no light, \nbut you can see two doors one towards east and one towards south");
-    Room room2 = new Room("a shady bathroom ", "bathroom with a old table and a broken sink ");
-    Room room3 = new Room("a large bedroom", "");
-    Room room4 = new Room("a dark room ","The room is filled with a horrible rotten smell, but so dark that nothing is visual");
-    Room room5 = new Room("a long hall", "a long hall with grey pictures on the walls and a small drawer");
-    Room room6 = new Room("a tunnel", "a narrow tunnel leading two ways");
-    Room room7 = new Room("a bedroom", "a small bedroom containing a small bed");
-    Room room8 = new Room("stairs", "stairs leading outside towards south");
-    Room room9 = new Room("boss", "Jeff Dahmer");
+    Room room2 = new Room("a shady bathroom ", "you see a small bathroom with a old table and a broken sink, there is no more doors");
+    Room room3 = new Room("a large bedroom", "you see a larger bedroom with a king size bed covered in trash, there is no more doors");
+    Room room4 = new Room("a dark room ","you smell the room is filled with a horrible rotten smell, but so dark that you cant see anything other then two doors leading straight ahead and east");
+    Room room5 = new Room("a long hall", "you see a long hall with grey pictures on the walls and a small drawer in the middle, at the end of the hall a door is leading straight ahead");
+    Room room6 = new Room("a tunnel", "you see a long narrow tunnel leading two ways north and south");
+    Room room7 = new Room("a storage room", "you see a small storage room with locked cabins, and a weird blue barrel i the corner, there are no more doors");
+    Room room8 = new Room("a room with a man", "you see the man walking towards you with a hammer yelling i am DAHMER");
+    Room room9 = new Room("a creepy room", "you see a shady room lit up by candles, filled up with bones and typings on the walls spelling the words 'Jeff Dahmer'\na door is visible towards west");
 
 
     //Items
-    private Item flashLight = new Item("Flashlight", "old flashlight");
-    private Item key = new Item("Key", "Key");
-    private Item drill = new Item("Drill", "bloody drill with brain residue");
+    private Item mug = new Item("mug", "old coffee mug");
+    private Item bottle = new Item("empty bottle", "empty beer bottle");
+    private Item drill = new Item("Drill", "bloody drill with human residue");
 
     //Food
-    private Food cheese = new Food("cheese", "smelly cheese", 20);
-    private Food meat = new Food("Meat", "Cooked meat", 20);
+    private Food Chocolate = new Food("Chocolate bar", "chocolate bar", 20);
+    private Food meat = new Food("Meat", "smelly meat", -20);
 
     //Drinks
     private Drink beer = new Drink("Budweiser", "Can of budweiser. Maybe there is something bad about this", -20);
@@ -39,15 +39,14 @@ public class Map {
         //Room1
         room1.setEast(room2);
         room1.setSouth(room4);
-        room1.addEnemy(dahmer);
 
         //Room2
         room2.setWest(room1);
-        room2.addItem(flashLight);
+        room2.addItem(mug);
 
         //Room3
         room3.setSouth(room6);
-        room3.addItem(key);
+        room3.addItem(bottle);
         room3.addItem(beer);
 
         //Room4
@@ -69,15 +68,15 @@ public class Map {
         //Room7
         room7.setNorth(room4);
         room7.addItem(drill);
-        room7.addItem(cheese);
+        room7.addItem(Chocolate);
 
         //Room8
         room8.setEast(room9);
-
+        room8.addEnemy(dahmer);
         //Room9
         room9.setNorth(room6);
         room9.setWest(room8);
-        room9.addEnemy(dahmer);
+
 
     }
 

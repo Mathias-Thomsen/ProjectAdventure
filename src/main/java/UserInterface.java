@@ -38,7 +38,7 @@ public class UserInterface {
                     System.out.println(adventure.getSelectedRoom().getRoomInfo());
                     if (!adventure.getSelectedRoom().getItems().isEmpty()){
                         for (Item item : adventure.getSelectedRoom().getItems()) {
-                            System.out.println("This room contains a " + item.getItemDescription());
+                            System.out.println("in the room you see a " + item.getItemDescription());
                         }
                         for (Enemy enemy : adventure.getSelectedRoom().getEnemy()){
                             System.out.println("This room contains a " + enemy.getEnemyDescription());
@@ -120,7 +120,7 @@ public class UserInterface {
                     }
                     else if (resultDrink == ReturnMessage.NOT_FOUND) {
                         System.out.println("Invalid item " + userChoice);
-                        System.out.println("Maybe you need to take your drink first before you can eat...");
+                        System.out.println("Maybe you need to take your drink first before you can drink...");
                     }
                     break;
 
@@ -169,24 +169,7 @@ public class UserInterface {
 
 
                 case "help":
-                    System.out.println("""
-                    Game guide:
-                    ---------------------------------------------------------
-                    Commands:
-                    to move: "go" and "direction" north, south, west or east.
-                    to see location: "look"
-                    to pickup: "take" and "item name"
-                    to drop: "drop" and "item name"
-                    to see the player inventory: "inventory"
-                    to consume a food "eat" and "item name"
-                    to see health: "health"
-                    to eat food: "eat"
-                    to drink: "drink"
-                    to equip a weapon: "equip"
-                    to attack a enemy: "attack"
-                    
-                    whats next?
-                     """);
+                    gameGuide();
                     break;
 
                 case "exit":
@@ -203,9 +186,10 @@ public class UserInterface {
     public void start() {
         System.out.println("\u001B[31m"+"\n\uD83D\uDD2A\uD83E\uDE78Welcome to the Mystery of Dohmers Basement\uD83E\uDE78\uD83D\uDD2A");
         System.out.println("--------------------------------------------------\n");
-        System.out.println("Access Game Guide during the game by typing: help");
         System.out.println("Press ENTER to start the game");
         userInput = scanner.nextLine();
+        System.out.println("Access Game Guide during the game by typing: help");
+        gameGuide();
         boolean userFalse = false;
 
         while (!userFalse) {
@@ -219,4 +203,26 @@ public class UserInterface {
         }
 
     }
+    public void gameGuide(){
+        System.out.println("""
+                    Game guide:
+                    ---------------------------------------------------------
+                    Commands:
+                    to move: "go" and "direction" north, south, west or east.
+                    to see location: "look"
+                    to pickup: "take" and "item name"
+                    to drop: "drop" and "item name"
+                    to see inventory: "inventory"
+                    to consume a food "eat" and "item name"
+                    to see health: "health"
+                    to eat food: "eat"
+                    to drink: "drink"
+                    to equip a weapon: "equip" and "weapon"
+                    to attack a enemy: "attack" and "enemy"
+                    
+                    whats next?
+                     """);
+
+    }
+
 }
