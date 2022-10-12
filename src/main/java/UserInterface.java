@@ -93,15 +93,18 @@ public class UserInterface {
                                 System.exit(1);
                             }
                             System.out.println("your current health is now " + adventure.getPlayer().getHealth());
+                            System.out.println("What's next?");
 
                         }
                         else if (resultFood == ReturnMessage.CANT) {
                             System.out.println("You can not eat " + userChoice);
+                            System.out.println("What's next?");
 
                         }
                         else if (resultFood == ReturnMessage.NOT_FOUND) {
                             System.out.println("Invalid item " + userChoice);
                             System.out.println("Maybe you need to take your food first before you can eat...");
+                            System.out.println("What's next?");
                         }
                         break;
 
@@ -112,15 +115,18 @@ public class UserInterface {
                     if (resultDrink == ReturnMessage.OK) {
                         System.out.println("you have drank " + userChoice);
                         System.out.println("your current health is now " + adventure.getPlayer().getHealth());
+                        System.out.println("What's next?");
 
                     }
                     else if (resultDrink == ReturnMessage.CANT) {
                         System.out.println("You can not drink " + userChoice);
+                        System.out.println("What's next?");
 
                     }
                     else if (resultDrink == ReturnMessage.NOT_FOUND) {
                         System.out.println("Invalid item " + userChoice);
                         System.out.println("Maybe you need to take your drink first before you can drink...");
+                        System.out.println("What's next?");
                     }
                     break;
 
@@ -135,6 +141,7 @@ public class UserInterface {
                     if (result == ReturnMessage.OK) { System.out.println("you equipped " + userChoice); }
                     else if (result == ReturnMessage.CANT) {System.out.println(userChoice +  " cannot be equipped.");}
                     else if (result == ReturnMessage.NOT_FOUND){System.out.println(userChoice + " is an invalid item or is not in inventory");}
+                    System.out.println("What's next?");
                     break;
                 }
 

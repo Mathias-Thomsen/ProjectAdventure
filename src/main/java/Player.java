@@ -4,9 +4,8 @@ public class Player {
     private Room selectedRoom;
     private ArrayList<Item> inventory = new ArrayList<>();
     private ArrayList<Item> equipWeapon = new ArrayList<>();
-    private ArrayList<Weapon> equipWeapons = new ArrayList<>();
     private Weapon currentWeapon;
-    private double health = 50;
+    private double health;
 
 
     public Player(double health) {
@@ -14,9 +13,6 @@ public class Player {
     }
     public double getHealth() {
         return health;
-    }
-    public void setHealth(double health) {
-        this.health += health;
     }
 
     public boolean move(String userInput){
@@ -70,14 +66,6 @@ public class Player {
         return inventory;
     }
 
-    public ArrayList<Item> getEquipWeapon(){
-        return equipWeapon;
-    }
-    public void addEquipWeapon(Item equipWepon){
-        equipWeapon.add(equipWepon);
-    }
-
-
     public String getItemNameUser(){
         for (Item weapon : equipWeapon){
             String itemAttackName = weapon.getItemName();
@@ -98,9 +86,6 @@ public class Player {
             }
             return ReturnMessage.NOT_FOUND;
         }
-    }
-    public Weapon getCurrentWeapon(){
-        return currentWeapon;
     }
 
     public ReturnMessage attackCommand(String userChoice){
